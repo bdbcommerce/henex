@@ -27,7 +27,9 @@
       "PowerShell(php -v)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "PowerShell(cd d:\\\\OSPanel\\\\home\\\\Henex; composer show --format=json 2>&1 | ConvertFrom-Json | Select-Object -ExpandProperty installed | Where-Object { $_.name -match '\\(laravel/framework|livewire/livewire|spatie/laravel|intervention/image|guzzlehttp/guzzle\\)' } | Select-Object name, version | Format-Table -AutoSize)"
+      "PowerShell(cd d:\\\\OSPanel\\\\home\\\\Henex; composer show --format=json 2>&1 | ConvertFrom-Json | Select-Object -ExpandProperty installed | Where-Object { $_.name -match '\\(laravel/framework|livewire/livewire|spatie/laravel|intervention/image|guzzlehttp/guzzle\\)' } | Select-Object name, version | Format-Table -AutoSize)",
+      "Bash(git push *)",
+      "PowerShell(cd d:\\\\OSPanel\\\\home\\\\Henex; composer show --format=json 2>&1 | ConvertFrom-Json | Select-Object -ExpandProperty installed | Where-Object { $_.name -match '\\(laravel/framework|livewire/livewire|spatie/laravel|intervention/image|guzzlehttp/guzzle|symfony|nesbot\\)' } | Select-Object name, version | Format-Table -AutoSize)"
     ]
   }
 }
