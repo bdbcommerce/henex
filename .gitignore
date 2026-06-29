@@ -5,6 +5,7 @@
 .env.production
 .phpactor.json
 .phpunit.result.cache
+/.claude
 /.codex
 /.cursor/
 /.idea
@@ -25,3 +26,8 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+CLAUDE.md
+CMD_PANEL_SUMMARY.md
+DEPLOYMENT.md
+MEDIA_IMPORT_COMPLETE.md
+PRODUCT_DATA_READY.md
