@@ -22,7 +22,9 @@
       "PowerShell(Invoke-WebRequest -Uri \"http://127.0.0.1:8000/\" -UseBasicParsing)",
       "PowerShell(Invoke-WebRequest -Uri \"http://127.0.0.1:8000/uz\" -TimeoutSec 5 -UseBasicParsing | Select-Object StatusCode, @{Name='Length';Expression={$_.Content.Length}})",
       "PowerShell(Invoke-WebRequest -Uri \"http://127.0.0.1:8000/\" -TimeoutSec 5 -UseBasicParsing 2>&1)",
-      "PowerShell(cd \"d:\\\\OSPanel\\\\home\\\\Henex\\\\.claude\"; powershell -ExecutionPolicy Bypass -File .\\\\download_images.ps1 2>&1 | Select-Object -First 100)"
+      "PowerShell(cd \"d:\\\\OSPanel\\\\home\\\\Henex\\\\.claude\"; powershell -ExecutionPolicy Bypass -File .\\\\download_images.ps1 2>&1 | Select-Object -First 100)",
+      "Bash(composer check-platform-reqs *)",
+      "PowerShell(php -v)"
     ]
   }
 }
