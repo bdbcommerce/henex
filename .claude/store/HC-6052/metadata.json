@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=74",
+    "id":  74,
+    "application":  "Small chain supermarkets, convenience stores, franchised stores, payment, medical and health care",
+    "subtitle":  "2D Desktop Barcode Scanner",
+    "category":  "Desktop Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/80fd31a9b42f95f.jpg",
+                       "filename":  "main_80fd31a9b42f95f.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/80fd31a9b42f95f.jpg",
+                       "filename":  "gallery_1_80fd31a9b42f95f.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/ca589002bb172e0.jpg",
+                       "filename":  "gallery_2_ca589002bb172e0.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/4d15bf9915d09c.jpg",
+                       "filename":  "gallery_3_4d15bf9915d09c.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/581992f6ad83b2f.jpg",
+                       "filename":  "gallery_4_581992f6ad83b2f.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/c03211078e95e62.jpg",
+                       "filename":  "gallery_5_c03211078e95e62.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/caf5657b2ad4f92.jpg",
+                       "filename":  "gallery_6_caf5657b2ad4f92.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-6052",
+    "subcategory":  "Desktop Barcode Scanner",
+    "features":  "Firmware can be upgraded online | Can read screen barcodes from mobile phones and computers | USB and RS232 interface, auto-matching, plug and play | Unique shape design, rotatable base | Advanced decoding algorithm for most 1D and 2D codes | Blue and red LED indicator, double buzzer"
+}

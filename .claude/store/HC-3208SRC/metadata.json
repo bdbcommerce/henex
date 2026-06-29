@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=57",
+    "id":  57,
+    "application":  "Logistics, express, warehouse inventory, tobacco, health care, industrial business",
+    "subtitle":  "2D Wireless Barcode Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/1cb3a162c393caf.jpg",
+                       "filename":  "main_1cb3a162c393caf.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/1cb3a162c393caf.jpg",
+                       "filename":  "gallery_1_1cb3a162c393caf.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/f9c4ecf35160a64.jpg",
+                       "filename":  "gallery_2_f9c4ecf35160a64.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/d492c3d4a722860.jpg",
+                       "filename":  "gallery_3_d492c3d4a722860.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/88cebc00e131854.jpg",
+                       "filename":  "gallery_4_88cebc00e131854.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/4ae414c67d79214.jpg",
+                       "filename":  "gallery_5_4ae414c67d79214.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/cb5c65d70e2e4.jpg",
+                       "filename":  "gallery_6_cb5c65d70e2e4.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-3208SRC",
+    "subcategory":  "2D Wireless Barcode Scanner",
+    "features":  "1MP image frame rate up to 60fps | Support OCR (Passport, ID card, driving license, Visa Card etc.) | 3-in-1 transmission: Cradle + BT + Type-B Cable | Can read all 1D/2D/Dotcode barcode on screen and paper | Support double firmware upgrade online | Support for offline storage mode, 380,000 characters"
+}

@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=102",
+    "id":  102,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "Laser Wireless Barcode Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/4cd73762b4d9bda.jpg",
+                       "filename":  "main_4cd73762b4d9bda.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/4cd73762b4d9bda.jpg",
+                       "filename":  "gallery_1_4cd73762b4d9bda.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/367f6eb4373e4ca.jpg",
+                       "filename":  "gallery_2_367f6eb4373e4ca.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/c14790e42466b10.jpg",
+                       "filename":  "gallery_3_c14790e42466b10.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/6056fca48bd1214.jpg",
+                       "filename":  "gallery_4_6056fca48bd1214.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/288dc31cd59b63a.jpg",
+                       "filename":  "gallery_5_288dc31cd59b63a.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/d7402d2962de05f.jpg",
+                       "filename":  "gallery_6_d7402d2962de05f.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-2000R",
+    "subcategory":  "1D Wireless Barcode Scanner",
+    "features":  "High-speed scan module decodes all 1D codes | Ergonomic design, very comfortable operating sense | Red and Blue LED indicator, buzzer and motor vibration | Large capacity battery, continuous use over 12 hours | Three working modes: Immediate, Auto Memory and Inventory | Offline inventory mode, storage capacity 380,000 bytes | Air communication distance 80 meters with automatic storage"
+}

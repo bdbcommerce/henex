@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=103",
+    "id":  103,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "CCD Wireless Barcode Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/b6180f9699a8573.jpg",
+                       "filename":  "main_b6180f9699a8573.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/b6180f9699a8573.jpg",
+                       "filename":  "gallery_1_b6180f9699a8573.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/81f9635f58e65.jpg",
+                       "filename":  "gallery_2_81f9635f58e65.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/8533a6cdd22c587.jpg",
+                       "filename":  "gallery_3_8533a6cdd22c587.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/007e0f06b69f09.jpg",
+                       "filename":  "gallery_4_007e0f06b69f09.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/6f1ab76f2ac1d15.jpg",
+                       "filename":  "gallery_5_6f1ab76f2ac1d15.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/ef7d1fa6cd670a6.jpg",
+                       "filename":  "gallery_6_ef7d1fa6cd670a6.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-2102R",
+    "subcategory":  "1D Wireless Barcode Scanner",
+    "features":  "Red and Blue LED indicator, buzzer and motor vibration | High-pixel sensor to read various complicated 1D codes | Can choose 2.4G and Bluetooth | Large capacity battery, continuous use over 24 hours | Immediate, Auto Memory and Inventory modes, 380,000 bytes | Supports reading 1D screen barcodes from mobile phones and computers | Air communication distance 40-100 meters"
+}

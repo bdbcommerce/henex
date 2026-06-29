@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(php --version)",
+      "PowerShell(composer --version)",
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)",
+      "WebFetch(domain:henex.cn)",
+      "PowerShell(Get-Command npm)",
+      "PowerShell(Head -20)",
+      "PowerShell(Get-ChildItem \"d:\\\\OSPanel\\\\home\\\\Henex\\\\app\\\\Livewire\" -Recurse | Where-Object { $_.Mode -match '^-' } | Select-Object Name)",
+      "PowerShell(Get-ChildItem \"d:\\\\OSPanel\\\\home\\\\Henex\\\\resources\\\\views\" -Recurse | Where-Object { $_.Mode -match '^-' } | Select-Object FullName | ForEach-Object { $_.FullName -replace [regex]::Escape\\(\"d:\\\\OSPanel\\\\home\\\\Henex\\\\resources\\\\views\\\\\"\\), \"\" } | Select-Object -First 50)",
+      "PowerShell($env:Path -split ';' | Where-Object { $_ -match 'node|npm' })",
+      "PowerShell($env:Path = \"C:\\\\Program Files\\\\nodejs;$env:Path\"; cd d:\\\\OSPanel\\\\home\\\\Henex; npm run dev)",
+      "PowerShell($env:Path = \"C:\\\\Program Files\\\\nodejs;$env:Path\"; cd d:\\\\OSPanel\\\\home\\\\Henex; Invoke-WebRequest -Uri \"http://henex.local/\" -UseBasicParsing -ErrorAction SilentlyContinue | Select-Object StatusCode, RawContentLength)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://henex/\" -UseBasicParsing -ErrorAction SilentlyContinue)",
+      "PowerShell(cd d:\\\\OSPanel\\\\home\\\\Henex; $env:Path = \"C:\\\\Program Files\\\\php;$env:Path\"; php artisan migrate:status 2>&1 | Select-Object -First 20)",
+      "PowerShell(cd d:\\\\OSPanel\\\\home\\\\Henex; $env:Path = \"C:\\\\Program Files\\\\php;$env:Path\"; php -r \"require 'vendor/autoload.php'; \\\\$app = require 'bootstrap/app.php'; \\\\$app->make\\(\\\\Illuminate\\\\Contracts\\\\Console\\\\Kernel::class\\)->bootstrap\\(\\); echo 'Regions: ' . \\\\App\\\\Models\\\\Region::count\\(\\) . PHP_EOL;\")",
+      "PowerShell(cd d:\\\\OSPanel\\\\home\\\\Henex; $env:Path = \"C:\\\\Program Files\\\\php;$env:Path\"; php artisan migrate:fresh --seed 2>&1)",
+      "PowerShell(cd d:\\\\OSPanel\\\\home\\\\Henex; $env:Path = \"C:\\\\Program Files\\\\php;C:\\\\Program Files\\\\nodejs;$env:Path\"; npm run dev 2>&1 | Select-Object -First 30)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://henex/\" -UseBasicParsing -ErrorAction SilentlyContinue -TimeoutSec 5)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://127.0.0.1:8000/\" -UseBasicParsing)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://127.0.0.1:8000/uz\" -TimeoutSec 5 -UseBasicParsing | Select-Object StatusCode, @{Name='Length';Expression={$_.Content.Length}})",
+      "PowerShell(Invoke-WebRequest -Uri \"http://127.0.0.1:8000/\" -TimeoutSec 5 -UseBasicParsing 2>&1)",
+      "PowerShell(cd \"d:\\\\OSPanel\\\\home\\\\Henex\\\\.claude\"; powershell -ExecutionPolicy Bypass -File .\\\\download_images.ps1 2>&1 | Select-Object -First 100)"
+    ]
+  }
+}

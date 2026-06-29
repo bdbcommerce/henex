@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=192",
+    "id":  192,
+    "application":  "Mobile phone assembly, photovoltaic manufacturing, automobile production lines",
+    "subtitle":  "Handheld Industrial Barcode Scanner",
+    "category":  "Wired Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202501/74342d7038cefed.jpg",
+                       "filename":  "main_74342d7038cefed.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202501/74342d7038cefed.jpg",
+                       "filename":  "gallery_1_74342d7038cefed.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202501/8bea8a40ad52b15.jpg",
+                       "filename":  "gallery_2_8bea8a40ad52b15.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202501/f79ef953d557e14.jpg",
+                       "filename":  "gallery_3_f79ef953d557e14.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202501/e95e73f1c163d48.jpg",
+                       "filename":  "gallery_4_e95e73f1c163d48.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202501/8ba72ba68345cf9.jpg",
+                       "filename":  "gallery_5_8ba72ba68345cf9.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202501/681a9f6ff1d1e97.jpg",
+                       "filename":  "gallery_6_681a9f6ff1d1e97.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-4208D",
+    "subcategory":  "Industrial Hand-Held Scanner",
+    "features":  "Support USB, RS-232 and Virtual serial port | Can read all 1D/2D/Dotcode barcode on screen and paper | Compatible with Win XP/7/8/10, iOS, Android | LED aiming clearly indicates target field of view | Strong robustness algorithm for dirty, defective, low-contrast barcodes | 1.3MP global shutter sensor with advanced lighting system"
+}

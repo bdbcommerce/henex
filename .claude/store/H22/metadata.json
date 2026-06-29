@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=106",
+    "id":  106,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "2D Scan Engine Module",
+    "category":  "Barcode Scanner Module",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/cea17871bf4b7d9.jpg",
+                       "filename":  "main_cea17871bf4b7d9.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/cea17871bf4b7d9.jpg",
+                       "filename":  "gallery_1_cea17871bf4b7d9.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/f795705d08f564b.jpg",
+                       "filename":  "gallery_2_f795705d08f564b.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/b831682cc913c57.jpg",
+                       "filename":  "gallery_3_b831682cc913c57.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/1a0397ed097bd3f.jpg",
+                       "filename":  "gallery_4_1a0397ed097bd3f.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/4d2629b02e8cebb.jpg",
+                       "filename":  "gallery_5_4d2629b02e8cebb.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202405/7ee9afbd8ad591.jpg",
+                       "filename":  "gallery_6_7ee9afbd8ad591.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H22",
+    "subcategory":  "Barcode Scanner Module",
+    "features":  "Simple OEM development model | LED and Buzzer indication interface | USB and RS232 communication interface | Can quickly read mobile phone payment QR codes | Supports high-performance screen 1D/2D barcode scanning"
+}

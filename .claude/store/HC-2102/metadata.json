@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=99",
+    "id":  99,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "CCD Wired Barcode Scanner",
+    "category":  "Wired Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/8e4af0157e07aae.jpg",
+                       "filename":  "main_8e4af0157e07aae.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/8e4af0157e07aae.jpg",
+                       "filename":  "gallery_1_8e4af0157e07aae.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/8abf5cce88dd42.jpg",
+                       "filename":  "gallery_2_8abf5cce88dd42.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/0fc06eb9ade684a.jpg",
+                       "filename":  "gallery_3_0fc06eb9ade684a.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/46d23dd6ed644ab.jpg",
+                       "filename":  "gallery_4_46d23dd6ed644ab.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/aa09b443a92fd88.jpg",
+                       "filename":  "gallery_5_aa09b443a92fd88.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/2e4b3e92d59ac.jpg",
+                       "filename":  "gallery_6_2e4b3e92d59ac.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-2102",
+    "subcategory":  "1D Wired Barcode Scanner",
+    "features":  "Plug and play, decode rate up to 350 times/second | High-pixel sensors for various complicated 1D codes | Dustproof design | Ergonomic design, comfortable operation | Supports reading screen barcodes | Blue LED indicator and loud buzzer"
+}

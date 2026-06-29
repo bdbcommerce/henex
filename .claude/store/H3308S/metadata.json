@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=195",
+    "id":  195,
+    "application":  "Chain stores, retail, medical, clothing, tobacco",
+    "subtitle":  "2D Wired Barcode Scanner",
+    "category":  "Wired Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202507/aac2638c1272d2f.jpg",
+                       "filename":  "main_aac2638c1272d2f.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202507/aac2638c1272d2f.jpg",
+                       "filename":  "gallery_1_aac2638c1272d2f.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202507/e0ebf582cf63bdb.jpg",
+                       "filename":  "gallery_2_e0ebf582cf63bdb.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202507/f3c4014c386670c.jpg",
+                       "filename":  "gallery_3_f3c4014c386670c.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202507/e2ee3294bb1cbdb.jpg",
+                       "filename":  "gallery_4_e2ee3294bb1cbdb.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202507/87afcba364973fb.jpg",
+                       "filename":  "gallery_5_87afcba364973fb.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202507/5376b7237f92.jpg",
+                       "filename":  "gallery_6_5376b7237f92.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H3308S",
+    "subcategory":  "2D Wired Barcode Scanner",
+    "features":  "1MP image frame rate up to 60fps | Support USB, RS-232 and Virtual serial port | Can read all 1D/2D/Dotcode barcode on screen and paper | Compatible with Win XP/7/8/10, iOS, Android | Strong decode ability for difficult barcodes | Support OCR (Passport, ID card, driving license, Visa Card etc.)"
+}

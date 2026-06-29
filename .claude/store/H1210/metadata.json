@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=130",
+    "id":  130,
+    "application":  "Commerce, health care, tobacco, industrial use",
+    "subtitle":  "2D Scan Engine Module",
+    "category":  "Barcode Scanner Module",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/ba5c7230d1edae.jpg",
+                       "filename":  "main_ba5c7230d1edae.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/ba5c7230d1edae.jpg",
+                       "filename":  "gallery_1_ba5c7230d1edae.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/c8d23c3f83692b4.jpg",
+                       "filename":  "gallery_2_c8d23c3f83692b4.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/bf0a69836eb7b20.jpg",
+                       "filename":  "gallery_3_bf0a69836eb7b20.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/1148d6c883249c7.jpg",
+                       "filename":  "gallery_4_1148d6c883249c7.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/300c03d7f50591b.jpg",
+                       "filename":  "gallery_5_300c03d7f50591b.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202304/10b740b165136.jpg",
+                       "filename":  "gallery_6_10b740b165136.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H1210",
+    "subcategory":  "Barcode Scanner Module",
+    "features":  "1MP images 1280×800 pixels | 12-pin wire connection | Can read all 1D/2D/Dotcode barcode on screen and paper | Compatible with Win XP/7/8/10, iOS, Android | Embeds in scanners, POS terminals, cashiers, and other devices"
+}

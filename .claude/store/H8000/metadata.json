@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=180",
+    "id":  180,
+    "application":  "Small chain supermarkets, convenience stores, franchised stores, payment, medical and health care",
+    "subtitle":  "2D Desktop Barcode Scanner",
+    "category":  "Desktop Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/e53c0baf5146f13.jpg",
+                       "filename":  "main_e53c0baf5146f13.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/e53c0baf5146f13.jpg",
+                       "filename":  "gallery_1_e53c0baf5146f13.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/ddfcffbaafd4d4d.jpg",
+                       "filename":  "gallery_2_ddfcffbaafd4d4d.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/8847fc4ec4cb076.jpg",
+                       "filename":  "gallery_3_8847fc4ec4cb076.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/59cac92518a421a.jpg",
+                       "filename":  "gallery_4_59cac92518a421a.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/c5b20ffe835a6e1.jpg",
+                       "filename":  "gallery_5_c5b20ffe835a6e1.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/db4831fde3f990f.jpg",
+                       "filename":  "gallery_6_db4831fde3f990f.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H8000",
+    "subcategory":  "Desktop Barcode Scanner",
+    "features":  "Large window design, omni-directional scanning | Firmware can be upgraded online | Can read screen barcodes from mobile phones and computers | USB and RS232 interface, auto-matching, plug and play | Unique shape design, rotatable base, various cradle accessories | Advanced decoding algorithm for most 1D and 2D codes | Blue and red two-color LED, adjustable horn"
+}

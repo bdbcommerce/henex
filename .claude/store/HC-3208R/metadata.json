@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=25",
+    "id":  25,
+    "application":  "Logistics, express, warehouse inventory, tobacco, health care, industrial business",
+    "subtitle":  "2D Wireless Barcode Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/adca53447a14332.jpg",
+                       "filename":  "main_adca53447a14332.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/adca53447a14332.jpg",
+                       "filename":  "gallery_1_adca53447a14332.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/b32048a1233e5b7.jpg",
+                       "filename":  "gallery_2_b32048a1233e5b7.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/f8253dc8299a0a8.jpg",
+                       "filename":  "gallery_3_f8253dc8299a0a8.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/a023f9028febf.jpg",
+                       "filename":  "gallery_4_a023f9028febf.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/a94f45eabb3bfcf.jpg",
+                       "filename":  "gallery_5_a94f45eabb3bfcf.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/20bfd22f8bbd336.jpg",
+                       "filename":  "gallery_6_20bfd22f8bbd336.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-3208R",
+    "subcategory":  "2D Wireless Barcode Scanner",
+    "features":  "3-in-1 transmission: 2.4G USB dongle + BT + Type-B Cable | Reading range (open air): 2.4G: 100m, BT: 40m | Large 2000mAh battery, 60 days standby | Charge time 4 hours, continuous scanning time 12 hours | Support double firmware upgrade online: wireless and decoder | Support for offline storage mode, can memory 380,000 characters (EAN-13 code)"
+}

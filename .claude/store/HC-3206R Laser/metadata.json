@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=105",
+    "id":  105,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "Laser Wireless Barcode Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/9b7b3ae2af54a6f.jpg",
+                       "filename":  "main_9b7b3ae2af54a6f.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/9b7b3ae2af54a6f.jpg",
+                       "filename":  "gallery_1_9b7b3ae2af54a6f.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/a6423f30e825198.jpg",
+                       "filename":  "gallery_2_a6423f30e825198.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/bae029f4504481a.jpg",
+                       "filename":  "gallery_3_bae029f4504481a.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/179968dd0fa1913.jpg",
+                       "filename":  "gallery_4_179968dd0fa1913.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/df0957f63a71.jpg",
+                       "filename":  "gallery_5_df0957f63a71.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/2c14065ae0bf46f.jpg",
+                       "filename":  "gallery_6_2c14065ae0bf46f.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-3206R Laser",
+    "subcategory":  "1D Wireless Barcode Scanner",
+    "features":  "Dustproof protection | Decodes most popular 1D barcodes | Ready for all POS system, ideal for retail | Plug and play, no driver needed | Ergonomic design, very comfortable operating sense | Latest decoder technology, quick and fluent reading | Green LED indicator and loud buzzer sound"
+}

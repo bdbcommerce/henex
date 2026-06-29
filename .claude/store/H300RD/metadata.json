@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=172",
+    "id":  172,
+    "application":  "Business, warehousing, express delivery, industrial use",
+    "subtitle":  "Pocket 2D Wireless Barcode Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/4ca66746364a398.jpg",
+                       "filename":  "main_4ca66746364a398.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/4ca66746364a398.jpg",
+                       "filename":  "gallery_1_4ca66746364a398.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/f48d79c8e5bd657.jpg",
+                       "filename":  "gallery_2_f48d79c8e5bd657.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/d1a5af4033b46e2.jpg",
+                       "filename":  "gallery_3_d1a5af4033b46e2.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/7d6e264f622772e.jpg",
+                       "filename":  "gallery_4_7d6e264f622772e.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/6919e8876837ede.jpg",
+                       "filename":  "gallery_5_6919e8876837ede.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202404/bd621330fdfdc0e.jpg",
+                       "filename":  "gallery_6_bd621330fdfdc0e.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H300RD",
+    "subcategory":  "2D Wireless Barcode Scanner",
+    "features":  "0.3MP 640×480 pixel | No driver needed, plug and play | Read 1D and 2D code on screen and paper | Battery capacity up to 1500mAh | Charge time 3 hours, continuous scanning time 24 hours | Communication: 2.4G, Bluetooth and Type-C cable | 1.44-inch color screen display, real-time battery monitoring"
+}

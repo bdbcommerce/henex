@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=176",
+    "id":  176,
+    "application":  "Logistics, express, warehouse inventory, tobacco, health care, industrial business",
+    "subtitle":  "2D Wireless Barcode Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/de1fb26cc57af65.jpg",
+                       "filename":  "main_de1fb26cc57af65.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/de1fb26cc57af65.jpg",
+                       "filename":  "gallery_1_de1fb26cc57af65.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/f4e1121d2b8dfff.jpg",
+                       "filename":  "gallery_2_f4e1121d2b8dfff.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/4fc69a090456084.jpg",
+                       "filename":  "gallery_3_4fc69a090456084.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/52bda255409e0a5.jpg",
+                       "filename":  "gallery_4_52bda255409e0a5.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/4e3f9d8efa000db.jpg",
+                       "filename":  "gallery_5_4e3f9d8efa000db.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202407/63379ce9834ba.jpg",
+                       "filename":  "gallery_6_63379ce9834ba.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-4208RC",
+    "subcategory":  "2D Wireless Barcode Scanner",
+    "features":  "0.3MP image frame rate up to 30fps | 3-in-1 transmission: Cradle + BT + Type-C Cable | Reading range (open air): 2.4G: 100m, BT: 40m | Large 2000mAh battery, 60 days standby | Can read all 1D/2D/Dotcode barcode on screen and paper | Support for offline storage mode, 380,000 characters | Replaceable 18650 lithium battery design"
+}

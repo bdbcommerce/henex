@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=101",
+    "id":  101,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "Laser Wired Barcode Scanner",
+    "category":  "Wired Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/77c2d99d8b428b8.jpg",
+                       "filename":  "main_77c2d99d8b428b8.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/77c2d99d8b428b8.jpg",
+                       "filename":  "gallery_1_77c2d99d8b428b8.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/9ad3a28617319bc.jpg",
+                       "filename":  "gallery_2_9ad3a28617319bc.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/fbbbfaf1c089b.jpg",
+                       "filename":  "gallery_3_fbbbfaf1c089b.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/3699831de67d0c5.jpg",
+                       "filename":  "gallery_4_3699831de67d0c5.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/b2c9961d783fd4c.jpg",
+                       "filename":  "gallery_5_b2c9961d783fd4c.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/f9f1bba2e026ecd.jpg",
+                       "filename":  "gallery_6_f9f1bba2e026ecd.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-3206 Laser",
+    "subcategory":  "1D Wired Barcode Scanner",
+    "features":  "Dustproof protection | Decodes most popular 1D barcodes | Ready for all POS system, ideal for retail | Plug and play, no driver needed | Ergonomic design, comfortable operating sense | Latest decoder technology, quick and fluent reading | Blue LED indicator and loud buzzer"
+}

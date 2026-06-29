@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=133",
+    "id":  133,
+    "application":  "Small chain supermarkets, convenience stores, specialty stores, payment, medical and health care",
+    "subtitle":  "Embedded 2D Scanner Module",
+    "category":  "Barcode Scanner Module",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202401/6cbae2d65a9ea3d.jpg",
+                       "filename":  "main_6cbae2d65a9ea3d.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202401/6cbae2d65a9ea3d.jpg",
+                       "filename":  "gallery_1_6cbae2d65a9ea3d.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202401/3adf2e50e8163ff.jpg",
+                       "filename":  "gallery_2_3adf2e50e8163ff.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202401/bedc869c28d74c3.jpg",
+                       "filename":  "gallery_3_bedc869c28d74c3.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202401/40f353318866581.jpg",
+                       "filename":  "gallery_4_40f353318866581.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202401/5d1d2db0cc78d20.jpg",
+                       "filename":  "gallery_5_5d1d2db0cc78d20.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202401/c3a6a2d0ea94689.jpg",
+                       "filename":  "gallery_6_c3a6a2d0ea94689.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H60",
+    "subcategory":  "Barcode Scanner Module",
+    "features":  "Self-developed core decoding algorithm, quickly reads various item barcodes | Decoding board and camera integrated design | USB(HID, CDC, HIDPOS), RS232 interfaces available | Wave and read scan experience with large angle lens | Fast and easy barcode reading completion"
+}

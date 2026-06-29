@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=202",
+    "id":  202,
+    "application":  "Logistics, express, warehouse inventory, tobacco, health care, industrial business",
+    "subtitle":  "2D Wireless Barcode Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/8ce4a58e904e519.jpg",
+                       "filename":  "main_8ce4a58e904e519.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/8ce4a58e904e519.jpg",
+                       "filename":  "gallery_1_8ce4a58e904e519.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/376eb0daec1f525.jpg",
+                       "filename":  "gallery_2_376eb0daec1f525.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/a5b98f3939bf257.jpg",
+                       "filename":  "gallery_3_a5b98f3939bf257.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/2f339160deaf329.jpg",
+                       "filename":  "gallery_4_2f339160deaf329.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/1317d772015a039.jpg",
+                       "filename":  "gallery_5_1317d772015a039.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/7da34f2f98fae13.jpg",
+                       "filename":  "gallery_6_7da34f2f98fae13.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H310RC",
+    "subcategory":  "2D Wireless Barcode Scanner",
+    "features":  "3-in-1 transmission: Cradle + BT + Type-C Cable | Support Charge cradle Or USB Dongle (optional) | Automatic charge in cradle, one key pair and one key upload data | One cradle with one scanner, or one cradle with more scanners (optional) | Support double firmware upgrade online: wireless and decoder | Support for offline storage mode, can memory 380,000 characters (EAN-13 code)"
+}

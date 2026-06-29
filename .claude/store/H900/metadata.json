@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=129",
+    "id":  129,
+    "application":  "Mobile phone assembly, photovoltaic manufacturing, automobile production lines",
+    "subtitle":  "Handheld Industrial Barcode Scanner",
+    "category":  "Wired Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/edd9e51a1e7458a.jpg",
+                       "filename":  "main_edd9e51a1e7458a.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/edd9e51a1e7458a.jpg",
+                       "filename":  "gallery_1_edd9e51a1e7458a.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/e7a6318f8817e8a.jpg",
+                       "filename":  "gallery_2_e7a6318f8817e8a.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/1beedc054187da6.jpg",
+                       "filename":  "gallery_3_1beedc054187da6.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/0667d9efc0e4077.jpg",
+                       "filename":  "gallery_4_0667d9efc0e4077.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/31b2b01d72087d5.jpg",
+                       "filename":  "gallery_5_31b2b01d72087d5.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/f493ed64db774c2.jpg",
+                       "filename":  "gallery_6_f493ed64db774c2.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H900",
+    "subcategory":  "Industrial Hand-Held Scanner",
+    "features":  "1280×800 high-resolution, high frame rate image sensor | Ergonomic gun-type design for industrial environments | Intelligent light source switching, active memory | Multiple communication interface options, plug and play | DPM barcode support for laser engraving and dotting | Intelligent debugging mode for fixed application scenarios"
+}

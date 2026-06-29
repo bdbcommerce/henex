@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=98",
+    "id":  98,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "Laser Wired Barcode Scanner",
+    "category":  "Wired Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/284c3b90a4faead.jpg",
+                       "filename":  "main_284c3b90a4faead.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/284c3b90a4faead.jpg",
+                       "filename":  "gallery_1_284c3b90a4faead.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/4d43fa7cc5c7a95.jpg",
+                       "filename":  "gallery_2_4d43fa7cc5c7a95.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/032601edaae7.jpg",
+                       "filename":  "gallery_3_032601edaae7.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/003323bda15e766.jpg",
+                       "filename":  "gallery_4_003323bda15e766.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/0f36a1384bbe8.jpg",
+                       "filename":  "gallery_5_0f36a1384bbe8.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/e2882efe8942cb0.jpg",
+                       "filename":  "gallery_6_e2882efe8942cb0.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-2000",
+    "subcategory":  "1D Wired Barcode Scanner",
+    "features":  "Dustproof protection | Decodes most popular 1D barcodes | Ready for all POS system, ideal for retail | Plug and play, no driver needed | Ergonomic design, very comfortable operating sense | Latest decoder technology, quick and fluent reading | Blue LED indicator and loud buzzer"
+}

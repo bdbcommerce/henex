@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=107",
+    "id":  107,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "Fixed Barcode Scanner",
+    "category":  "Barcode Scanner Module",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/1df04f3ba575b6e.jpg",
+                       "filename":  "main_1df04f3ba575b6e.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/1df04f3ba575b6e.jpg",
+                       "filename":  "gallery_1_1df04f3ba575b6e.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/dc58561f979b.jpg",
+                       "filename":  "gallery_2_dc58561f979b.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/691b5c71c42d49c.jpg",
+                       "filename":  "gallery_3_691b5c71c42d49c.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/1a9e8e9b3ea9ed7.jpg",
+                       "filename":  "gallery_4_1a9e8e9b3ea9ed7.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/1d5f22e79208326.jpg",
+                       "filename":  "gallery_5_1d5f22e79208326.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/916ddecfd6875a8.jpg",
+                       "filename":  "gallery_6_916ddecfd6875a8.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H33",
+    "subcategory":  "Barcode Scanner Module",
+    "features":  "Simple OEM development model | LED and Buzzer indication interface | 1MP CMOS image 1280×800 pixel | USB and RS232 communication interface | Can quickly read mobile phone payment QR codes | Supports high-performance screen 1D/2D barcode scanning"
+}

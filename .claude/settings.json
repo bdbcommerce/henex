@@ -1,0 +1,31 @@
+{
+  "env": {
+    "PATH": "D:\\OSPanel\\modules\\PHP-8.3\\PHP;D:\\OSPanel\\modules\\MySQL-8.4\\bin;${PATH}",
+    "COMPOSER_HOME": "D:\\OSPanel\\data\\PHP-8.3\\default\\composer",
+    "COMPOSER_PHAR": "D:\\OSPanel\\data\\PHP-8.3\\default\\composer\\composer.phar"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(php *)",
+      "Bash(composer *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(git init)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git status)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git branch *)",
+      "Bash(git checkout *)",
+      "Bash(git stash *)",
+      "Bash(mysql *)",
+      "Bash(mysqldump *)"
+    ],
+    "deny": [
+      "Bash(php artisan down)",
+      "Bash(php artisan db:wipe)",
+      "Bash(git push --force *)"
+    ]
+  }
+}

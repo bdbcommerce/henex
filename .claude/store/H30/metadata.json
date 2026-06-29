@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=108",
+    "id":  108,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "Fixed 2D Barcode Scanner",
+    "category":  "Barcode Scanner Module",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/160c202129141d7.jpg",
+                       "filename":  "main_160c202129141d7.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/160c202129141d7.jpg",
+                       "filename":  "gallery_1_160c202129141d7.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/f143e1a7a6eb92d.jpg",
+                       "filename":  "gallery_2_f143e1a7a6eb92d.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/766bb6559dcd97e.jpg",
+                       "filename":  "gallery_3_766bb6559dcd97e.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/e61ad585368db61.jpg",
+                       "filename":  "gallery_4_e61ad585368db61.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/dce183d9fd2e383.jpg",
+                       "filename":  "gallery_5_dce183d9fd2e383.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/902754d0a9d57a7.jpg",
+                       "filename":  "gallery_6_902754d0a9d57a7.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H30",
+    "subcategory":  "Barcode Scanner Module",
+    "features":  "Excellent decoding, scans various complex codes | Easy to install, super wide field of view | High and low temperature resistant wire material | Supports paper barcode, WeChat, Alipay scanning | High performance decoding for various 1D and 2D codes | LED fill light and buzzer | Multiple communication interfaces, plug and play"
+}

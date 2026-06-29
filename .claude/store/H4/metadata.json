@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=113",
+    "id":  113,
+    "application":  "Business, warehousing, manufacturing, express delivery, industrial use",
+    "subtitle":  "Enterprise Mobile Computer",
+    "category":  "Mobile Data Collector",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/829d7f21d84bb1c.jpg",
+                       "filename":  "main_829d7f21d84bb1c.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/829d7f21d84bb1c.jpg",
+                       "filename":  "gallery_1_829d7f21d84bb1c.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/58d64bb659cfcc6.jpg",
+                       "filename":  "gallery_2_58d64bb659cfcc6.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/727b8f16c773332.jpg",
+                       "filename":  "gallery_3_727b8f16c773332.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/792277cc1b8852.jpg",
+                       "filename":  "gallery_4_792277cc1b8852.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/963481011c56453.jpg",
+                       "filename":  "gallery_5_963481011c56453.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/f0b6b99037877dc.jpg",
+                       "filename":  "gallery_6_f0b6b99037877dc.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H4",
+    "subcategory":  "Mobile Data Collector",
+    "features":  "Dual Engine \u0026 Dual Camera — dual scan engines for long and short focal length | Octa-core 2.0GHz chip, 4+64GB memory, Android 11 OS | Ultra-slim, high-strength materials, compact one-hand grip design | Enterprise keyboard + on-screen keypad dual input methods | Large capacity battery for all-day use | Multiple communication interfaces"
+}

@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=69",
+    "id":  69,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "2D Wired Barcode Scanner",
+    "category":  "Wired Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/8eac7d00a28d193.jpg",
+                       "filename":  "main_8eac7d00a28d193.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/8eac7d00a28d193.jpg",
+                       "filename":  "gallery_1_8eac7d00a28d193.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/753d6dd6af92091.jpg",
+                       "filename":  "gallery_2_753d6dd6af92091.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/9978f367dde3710.jpg",
+                       "filename":  "gallery_3_9978f367dde3710.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/6ae2616f3873817.jpg",
+                       "filename":  "gallery_4_6ae2616f3873817.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/cb5ed45d4473ce0.jpg",
+                       "filename":  "gallery_5_cb5ed45d4473ce0.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/30a2bf1d8ab3862.jpg",
+                       "filename":  "gallery_6_30a2bf1d8ab3862.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-3209",
+    "subcategory":  "2D Wired Barcode Scanner",
+    "features":  "LED indicator and buzzer sound | Excellent decoding, scans various complex codes | Ergonomic design for comfortable operation | Supports paper barcode, WeChat, Alipay scan | High temperature resistant cable material | Modular design, easy to assemble, strong drop resistance"
+}

@@ -1,0 +1,25 @@
+﻿User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /storage
+
+# Sitemaps
+Sitemap: https://henex.uz/sitemap.xml
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+
+# Yandex-specific
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /

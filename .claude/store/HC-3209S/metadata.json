@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=70",
+    "id":  70,
+    "application":  "Business, payment, health care, tobacco, industrial use",
+    "subtitle":  "2D Wired Barcode Scanner",
+    "category":  "Wired Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/b534005848e2fea.jpg",
+                       "filename":  "main_b534005848e2fea.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/b534005848e2fea.jpg",
+                       "filename":  "gallery_1_b534005848e2fea.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/89ab94cbb593be3.jpg",
+                       "filename":  "gallery_2_89ab94cbb593be3.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/a5cc83b76a9988e.jpg",
+                       "filename":  "gallery_3_a5cc83b76a9988e.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/76d46521580d862.jpg",
+                       "filename":  "gallery_4_76d46521580d862.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/7b647665300d82.jpg",
+                       "filename":  "gallery_5_7b647665300d82.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/26f9adbab63be72.jpg",
+                       "filename":  "gallery_6_26f9adbab63be72.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "HC-3209S",
+    "subcategory":  "2D Wired Barcode Scanner",
+    "features":  "1MP 1280×800 pixel | No driver needed, plug and play | Support firmware upgrade online | Read all 1D and 2D code on screen and paper | Supports USB, TTL-232 and Virtual serial port | Reads Micro QR, MicroPDF417, Maxicode, Aztec | World\u0027s first screw-free design, easy to assemble"
+}

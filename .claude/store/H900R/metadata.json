@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=173",
+    "id":  173,
+    "application":  "Mobile phone assembly, photovoltaic manufacturing, data center, pharmaceutical, warehousing, oil \u0026 gas, new energy vehicles",
+    "subtitle":  "Wireless Handheld Industrial Barcode Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202406/1f9585df39d368e.jpg",
+                       "filename":  "main_1f9585df39d368e.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202406/1f9585df39d368e.jpg",
+                       "filename":  "gallery_1_1f9585df39d368e.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202406/f950ebb33f356fa.jpg",
+                       "filename":  "gallery_2_f950ebb33f356fa.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202406/997b8d52a3f22a6.jpg",
+                       "filename":  "gallery_3_997b8d52a3f22a6.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202406/790f091ed55eded.jpg",
+                       "filename":  "gallery_4_790f091ed55eded.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202406/41ac191efaafe62.jpg",
+                       "filename":  "gallery_5_41ac191efaafe62.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202406/0e0cf8c8a1197d2.jpg",
+                       "filename":  "gallery_6_0e0cf8c8a1197d2.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H900R",
+    "subcategory":  "2D Wireless Barcode Scanner",
+    "features":  "1280×1024 high-resolution, high frame rate image sensor | Ergonomic gun-type design, comfortable for long-term use | Intelligent light source control with active memory | DPM barcode support (laser engraving, dotting) | Intelligent debugging mode for fixed application scenarios | Multiple communication interface options, plug and play"
+}

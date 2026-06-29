@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=200",
+    "id":  200,
+    "application":  "Chain stores, retail, medical, clothing, tobacco",
+    "subtitle":  "2D Wired Barcode Scanner",
+    "category":  "Wired Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/e4d4440c7a96e59.jpg",
+                       "filename":  "main_e4d4440c7a96e59.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/e4d4440c7a96e59.jpg",
+                       "filename":  "gallery_1_e4d4440c7a96e59.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/1ba7925519c40e0.jpg",
+                       "filename":  "gallery_2_1ba7925519c40e0.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/37d225655f1a4.jpg",
+                       "filename":  "gallery_3_37d225655f1a4.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/a135879fd45923f.jpg",
+                       "filename":  "gallery_4_a135879fd45923f.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/78bb00750639805.jpg",
+                       "filename":  "gallery_5_78bb00750639805.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202509/10af40e9eb6d3d1.jpg",
+                       "filename":  "gallery_6_10af40e9eb6d3d1.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H310",
+    "subcategory":  "2D Wired Barcode Scanner",
+    "features":  "Support USB, RS-232 and Virtual serial port | Plug and play, no driver needed | 2m drop resistance, original imported ABS material | Can read all 1D and 2D barcode on screen and paper | Compatible with Win XP/7/8/10, iOS, Android | Ergonomic design, comfortable operating sense"
+}

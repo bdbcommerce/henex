@@ -1,0 +1,471 @@
+[
+    {
+        "folder":  "H310RC",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H310RC",
+        "id":  202,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H310R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H310R",
+        "id":  201,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3206R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-3206R",
+        "id":  77,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H3308SRC",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H3308SRC",
+        "id":  199,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H3308RC",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H3308RC",
+        "id":  198,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H3308SR",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H3308SR",
+        "id":  197,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H3308R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H3308R",
+        "id":  196,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-5208R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-5208R",
+        "id":  58,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3208R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-3208R",
+        "id":  25,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-4208SR",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-4208SR",
+        "id":  175,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-4208RCS",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-4208RCS",
+        "id":  178,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-4208SRC",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-4208SRC",
+        "id":  177,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-4208RC",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-4208RC",
+        "id":  176,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-4208R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-4208R",
+        "id":  174,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H900R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H900R",
+        "id":  173,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H500",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H500",
+        "id":  97,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H300SR",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H300SR",
+        "id":  34,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H300SRD",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H300SRD",
+        "id":  171,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H300RD",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H300RD",
+        "id":  172,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H300R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "H300R",
+        "id":  32,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3208SR",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-3208SR",
+        "id":  56,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-5208RC",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-5208RC",
+        "id":  61,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3209R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-3209R",
+        "id":  63,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3209SR",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-3209SR",
+        "id":  64,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-5208SRC",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-5208SRC",
+        "id":  62,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-5208SR",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-5208SR",
+        "id":  59,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-5208RCS",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-5208RCS",
+        "id":  60,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3208SRC",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-3208SRC",
+        "id":  57,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3208RC",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-3208RC",
+        "id":  31,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-2000R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-2000R",
+        "id":  102,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-2102R",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-2102R",
+        "id":  103,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3206R CCD",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-3206R CCD",
+        "id":  104,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3206R Laser",
+        "category":  "Wireless Barcode Scanner",
+        "name":  "HC-3206R Laser",
+        "id":  105,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3206 Laser",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-3206 Laser",
+        "id":  101,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3206 CCD",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-3206 CCD",
+        "id":  100,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-2102",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-2102",
+        "id":  99,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-2000",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-2000",
+        "id":  98,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H310",
+        "category":  "Wired Barcode Scanner",
+        "name":  "H310",
+        "id":  200,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H3308",
+        "category":  "Wired Barcode Scanner",
+        "name":  "H3308",
+        "id":  194,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H3308S",
+        "category":  "Wired Barcode Scanner",
+        "name":  "H3308S",
+        "id":  195,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-4208",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-4208",
+        "id":  179,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-4208S",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-4208S",
+        "id":  168,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3208S",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-3208S",
+        "id":  66,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-5208",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-5208",
+        "id":  67,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-5208S",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-5208S",
+        "id":  68,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3208",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-3208",
+        "id":  65,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3206",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-3206",
+        "id":  71,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3209",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-3209",
+        "id":  69,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-3209S",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-3209S",
+        "id":  70,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-4208D",
+        "category":  "Wired Barcode Scanner",
+        "name":  "HC-4208D",
+        "id":  192,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H900",
+        "category":  "Wired Barcode Scanner",
+        "name":  "H900",
+        "id":  129,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-666",
+        "category":  "Desktop Barcode Scanner",
+        "name":  "HC-666",
+        "id":  76,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H2200",
+        "category":  "Desktop Barcode Scanner",
+        "name":  "H2200",
+        "id":  190,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H2210",
+        "category":  "Desktop Barcode Scanner",
+        "name":  "H2210",
+        "id":  191,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H8000",
+        "category":  "Desktop Barcode Scanner",
+        "name":  "H8000",
+        "id":  180,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-7060",
+        "category":  "Desktop Barcode Scanner",
+        "name":  "HC-7060",
+        "id":  73,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-666N",
+        "category":  "Desktop Barcode Scanner",
+        "name":  "HC-666N",
+        "id":  75,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-6052",
+        "category":  "Desktop Barcode Scanner",
+        "name":  "HC-6052",
+        "id":  74,
+        "imageCount":  7
+    },
+    {
+        "folder":  "HC-8288",
+        "category":  "Desktop Barcode Scanner",
+        "name":  "HC-8288",
+        "id":  72,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H60",
+        "category":  "Barcode Scanner Module",
+        "name":  "H60",
+        "id":  133,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H33",
+        "category":  "Barcode Scanner Module",
+        "name":  "H33",
+        "id":  107,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H30",
+        "category":  "Barcode Scanner Module",
+        "name":  "H30",
+        "id":  108,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H1210",
+        "category":  "Barcode Scanner Module",
+        "name":  "H1210",
+        "id":  130,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H1203",
+        "category":  "Barcode Scanner Module",
+        "name":  "H1203",
+        "id":  134,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H22",
+        "category":  "Barcode Scanner Module",
+        "name":  "H22",
+        "id":  106,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H5",
+        "category":  "Mobile Data Collector",
+        "name":  "H5",
+        "id":  114,
+        "imageCount":  7
+    },
+    {
+        "folder":  "H4",
+        "category":  "Mobile Data Collector",
+        "name":  "H4",
+        "id":  113,
+        "imageCount":  7
+    }
+]

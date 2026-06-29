@@ -1,0 +1,47 @@
+{
+    "url":  "https://www.henex.cn/index.php?c=show\u0026id=97",
+    "id":  97,
+    "application":  "Business, warehousing, express delivery, industrial use",
+    "subtitle":  "2D Wearable Scanner",
+    "category":  "Wireless Barcode Scanner",
+    "images":  [
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/9a5ed30f9f6c1fd.jpg",
+                       "filename":  "main_9a5ed30f9f6c1fd.jpg",
+                       "type":  "main"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/9a5ed30f9f6c1fd.jpg",
+                       "filename":  "gallery_1_9a5ed30f9f6c1fd.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202211/e1d227ff69447b4.jpg",
+                       "filename":  "gallery_2_e1d227ff69447b4.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202304/58fdbccdac0110c.jpg",
+                       "filename":  "gallery_3_58fdbccdac0110c.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202308/ca87d366701e269.jpg",
+                       "filename":  "gallery_4_ca87d366701e269.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202210/f8523f83827407a.jpg",
+                       "filename":  "gallery_5_f8523f83827407a.jpg",
+                       "type":  "gallery"
+                   },
+                   {
+                       "url":  "https://www.henex.cn/uploadfile/202304/e2974647f46ae26.jpg",
+                       "filename":  "gallery_6_e2974647f46ae26.jpg",
+                       "type":  "gallery"
+                   }
+               ],
+    "name":  "H500",
+    "subcategory":  "2D Wireless Barcode Scanner",
+    "features":  "1.0MP CMOS image 1280×800px, quickly reads 1D and 2D codes | Support software online upgrade | Support finger, glove and lanyard wearing | Support Bluetooth and 2.4G mode | Shortcut pairing: scan code pairing and NFC touch | 600mAh removable lithium battery | Host and battery can be charged independently by cradle or cable"
+}
