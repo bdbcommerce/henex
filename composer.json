@@ -6,18 +6,18 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
-        "artesaos/seotools": "^1.4",
-        "intervention/image-laravel": "^4.0",
-        "laravel/framework": "^12.0",
+        "php": "^8.4",
+        "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0",
         "livewire/livewire": "^4.3",
-        "mcamara/laravel-localization": "^2.4",
         "spatie/laravel-medialibrary": "^11.23",
         "spatie/laravel-permission": "^8.0",
-        "spatie/laravel-sitemap": "^8.0",
+        "spatie/laravel-translatable": "^6.14",
         "spatie/laravel-sluggable": "^4.0",
-        "spatie/laravel-translatable": "^6.14"
+        "spatie/laravel-sitemap": "^8.0",
+        "intervention/image-laravel": "^4.0",
+        "mcamara/laravel-localization": "^2.4",
+        "artesaos/seotools": "^1.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -25,7 +25,7 @@
         "laravel/pint": "^1.27",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
-        "phpunit/phpunit": "^12.5.12"
+        "phpunit/phpunit": "^12.5"
     },
     "autoload": {
         "files": [
