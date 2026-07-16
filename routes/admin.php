@@ -3,7 +3,7 @@
 use App\Livewire\Admin;
 
 // Shared: super_admin + editor
-Route::middleware(['auth', 'verified', 'role:super_admin,editor'])->group(function () {
+Route::middleware(['auth', 'role:super_admin,editor'])->group(function () {
     Route::get('/', Admin\Dashboard::class)->name('dashboard');
 
     Route::get('/products', Admin\Products\ProductIndex::class)->name('products.index');
@@ -27,7 +27,7 @@ Route::middleware(['auth', 'verified', 'role:super_admin,editor'])->group(functi
 });
 
 // Restricted: super_admin only
-Route::middleware(['auth', 'verified', 'role:super_admin'])->group(function () {
+Route::middleware(['auth', 'role:super_admin'])->group(function () {
     Route::get('/settings', Admin\Settings\SettingsForm::class)->name('settings');
     Route::get('/users', Admin\Users\UserIndex::class)->name('users.index');
 });

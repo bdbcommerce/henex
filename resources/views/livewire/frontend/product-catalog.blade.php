@@ -6,20 +6,20 @@
             <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
                 <h3 class="font-bold text-neutral-950 text-sm mb-3 uppercase tracking-wide">{{ __('site.products.categories') }}</h3>
                 <div class="space-y-1">
-                    <button wire:click="$set('category', '')"
-                            class="w-full text-left px-3 py-2 rounded-lg text-sm transition {{ $category === '' ? 'bg-brand text-white font-semibold' : 'hover:bg-gray-50 text-gray-700' }}">
+                    <a href="{{ route('products.index') }}"
+                       class="block w-full text-left px-3 py-2 rounded-lg text-sm transition {{ $category === '' ? 'bg-brand text-white font-semibold' : 'hover:bg-gray-50 text-gray-700' }}">
                         {{ __('site.products.all_categories') }}
-                    </button>
+                    </a>
                     @foreach($categories as $cat)
-                    <button wire:click="$set('category', '{{ $cat->slug }}')"
-                            class="w-full text-left px-3 py-2 rounded-lg text-sm transition {{ $category === $cat->slug ? 'bg-brand text-white font-semibold' : 'hover:bg-gray-50 text-gray-700' }}">
+                    <a href="{{ route('products.category', $cat->slug) }}"
+                       class="block w-full text-left px-3 py-2 rounded-lg text-sm transition {{ $category === $cat->slug ? 'bg-brand text-white font-semibold' : 'hover:bg-gray-50 text-gray-700' }}">
                         {{ $cat->name }}
-                    </button>
+                    </a>
                         @foreach($cat->children as $child)
-                        <button wire:click="$set('category', '{{ $child->slug }}')"
-                                class="w-full text-left pl-6 pr-3 py-1.5 rounded-lg text-xs transition {{ $category === $child->slug ? 'bg-brand/10 text-brand font-semibold' : 'hover:bg-gray-50 text-gray-500' }}">
+                        <a href="{{ route('products.category', $child->slug) }}"
+                           class="block w-full text-left pl-6 pr-3 py-1.5 rounded-lg text-xs transition {{ $category === $child->slug ? 'bg-brand/10 text-brand font-semibold' : 'hover:bg-gray-50 text-gray-500' }}">
                             {{ $child->name }}
-                        </button>
+                        </a>
                         @endforeach
                     @endforeach
                 </div>

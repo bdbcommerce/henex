@@ -25,7 +25,7 @@
 {{-- Catalog --}}
 <section class="py-10">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        @livewire('frontend.product-catalog', ['categorySlug' => request('category', '')])
+        @livewire('frontend.product-catalog', ['categorySlug' => $category->slug ?? ''])
     </div>
 </section>
 

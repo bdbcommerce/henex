@@ -8,6 +8,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 // Products
 Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product:slug}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+Route::get('/category/{slug}', [\App\Http\Controllers\ProductController::class, 'category'])->name('products.category');
 
 // Where to Buy / Resellers
 Route::get('/where-to-buy', [\App\Http\Controllers\ResellerController::class, 'index'])->name('resellers');
@@ -31,12 +32,10 @@ Route::post('/set-locale/{locale}', [\App\Http\Controllers\LocaleController::cla
 // Sitemap
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
 
-// Authentication routes (Laravel Breeze)
+// Admin authentication
 Route::middleware('guest')->group(function () {
     Route::view('/login', 'auth.login')->name('login');
-    Route::view('/register', 'auth.register')->name('register');
     Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'store'])->name('login.store');
-    Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('register.store');
 });
 
 Route::middleware('auth')->group(function () {

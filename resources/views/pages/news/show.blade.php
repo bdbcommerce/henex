@@ -181,7 +181,7 @@
                     <h3 class="font-bold text-neutral-950 text-base mb-4">{{ __('site.nav.products') }}</h3>
                     <div class="flex flex-col gap-1">
                         @foreach($categories ?? [] as $category)
-                        <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), route('products.index', ['category' => $category->slug])) }}"
+                        <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), route('products.category', $category->slug)) }}"
                            class="text-sm text-gray-600 hover:text-brand hover:font-medium transition py-1 border-b border-gray-200 last:border-0">
                             {{ $category->name }}
                         </a>

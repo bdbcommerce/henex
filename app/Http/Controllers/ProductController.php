@@ -19,6 +19,19 @@ class ProductController extends Controller
         return view('pages.products.index', compact('categories'));
     }
 
+    public function category(string $slug): View
+    {
+        $category = Category::where('slug', $slug)->where('is_active', true)->firstOrFail();
+
+        $categories = Category::where('is_active', true)
+            ->whereNull('parent_id')
+            ->with('children')
+            ->orderBy('sort_order')
+            ->get();
+
+        return view('pages.products.index', compact('category', 'categories'));
+    }
+
     public function show(Product $product): View
     {
         abort_if(! $product->is_active, 404);

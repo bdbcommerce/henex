@@ -56,7 +56,7 @@
         <x-site.breadcrumb :items="[
             [__('site.nav.home'), LaravelLocalization::getLocalizedURL(app()->getLocale(), route('home'))],
             [__('site.nav.products'), LaravelLocalization::getLocalizedURL(app()->getLocale(), route('products.index'))],
-            [$product->categories->first()?->name, $product->categories->first() ? LaravelLocalization::getLocalizedURL(app()->getLocale(), route('products.index', ['category' => $product->categories->first()->slug])) : null],
+            [$product->categories->first()?->name, $product->categories->first() ? LaravelLocalization::getLocalizedURL(app()->getLocale(), route('products.category', $product->categories->first()->slug)) : null],
             [$product->name, null],
         ]" />
     </div>
@@ -122,7 +122,7 @@
                 @if($product->categories->isNotEmpty())
                 <div class="mb-3">
                     @foreach($product->categories as $cat)
-                    <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), route('products.index', ['category' => $cat->slug])) }}"
+                    <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), route('products.category', $cat->slug)) }}"
                        class="inline-block bg-brand/10 text-brand text-xs font-semibold rounded-full px-3 py-1 mr-1 hover:bg-brand/20 transition">
                         {{ $cat->name }}
                     </a>

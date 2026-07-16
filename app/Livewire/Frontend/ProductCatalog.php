@@ -12,7 +12,6 @@ class ProductCatalog extends Component
     #[Url(as: 'q')]
     public string $search = '';
 
-    #[Url]
     public string $category = '';
 
     #[Url]

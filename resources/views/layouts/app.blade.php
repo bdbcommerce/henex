@@ -84,7 +84,7 @@
                         {{ __('site.nav.all_products') ?? 'All Products' }} →
                     </a>
                     @foreach($categories ?? [] as $category)
-                        <a href="{{ route('products.index', ['category' => $category->slug]) }}"
+                        <a href="{{ route('products.category', $category->slug) }}"
                            class="block px-5 py-2 text-sm text-gray-700 hover:text-brand hover:bg-gray-50 transition">
                             {{ $category->getTranslation('name', app()->getLocale()) }}
                         </a>
@@ -186,7 +186,7 @@
                         All Products
                     </a>
                     @foreach($categories ?? [] as $category)
-                        <a href="{{ route('products.index', ['category' => $category->slug]) }}" @click="mobileOpen=false"
+                        <a href="{{ route('products.category', $category->slug) }}" @click="mobileOpen=false"
                            class="px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-gray-50 rounded-lg transition">
                             {{ $category->getTranslation('name', app()->getLocale()) }}
                         </a>
@@ -274,7 +274,7 @@
                 <ul class="space-y-2 text-sm">
                     @foreach($categories ?? [] as $category)
                         <li>
-                            <a href="{{ route('products.index', ['category' => $category->slug]) }}"
+                            <a href="{{ route('products.category', $category->slug) }}"
                                class="hover:text-white transition">
                                 {{ $category->getTranslation('name', app()->getLocale()) }}
                             </a>

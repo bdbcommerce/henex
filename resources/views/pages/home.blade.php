@@ -55,7 +55,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @forelse($categories ?? [] as $category)
-                <a href="{{ route('products.index', ['category' => $category->slug]) }}" class="group bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-xl transition">
+                <a href="{{ route('products.category', $category->slug) }}" class="group bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-xl transition">
                     <div class="aspect-video bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-5xl group-hover:scale-105 transition">📡</div>
                     <div class="p-6">
                         <h3 class="font-bold text-lg text-neutral-950 group-hover:text-brand transition line-clamp-2">
