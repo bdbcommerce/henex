@@ -12,9 +12,9 @@ class ResellerFinder extends Component
     #[Url]
     public string $type = '';
 
-    public function mount(string $regionSlug = ''): void
+    public function mount(?string $regionSlug = null): void
     {
-        $this->region = $regionSlug;
+        $this->region = $regionSlug ?? '';
     }
 
     public function render()

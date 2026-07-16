@@ -68,8 +68,8 @@
 <!-- Structured Data: Organization -->
 <script type="application/ld+json">
 {!! json_encode([
-    '@context' => 'https://schema.org',
-    '@type' => 'Organization',
+    '@' . 'context' => 'https://schema.org',
+    '@' . 'type' => 'Organization',
     'name' => 'HENEX Uzbekistan',
     'url' => url('/'),
     'logo' => asset('images/henex-logo.png'),
@@ -80,12 +80,12 @@
         'https://t.me/henex_uz'
     ],
     'contactPoint' => [
-        '@type' => 'ContactPoint',
+        '@' . 'type' => 'ContactPoint',
         'telephone' => '+998-90-123-4567',
         'contactType' => 'Sales'
     ],
     'address' => [
-        '@type' => 'PostalAddress',
+        '@' . 'type' => 'PostalAddress',
         'addressCountry' => 'UZ',
         'addressLocality' => 'Tashkent'
     ]

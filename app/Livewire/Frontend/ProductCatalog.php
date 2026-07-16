@@ -21,9 +21,9 @@ class ProductCatalog extends Component
     public function updatingSearch(): void { $this->resetPage(); }
     public function updatingCategory(): void { $this->resetPage(); }
 
-    public function mount(string $categorySlug = ''): void
+    public function mount(?string $categorySlug = null): void
     {
-        $this->category = $categorySlug;
+        $this->category = $categorySlug ?? '';
     }
 
     public function render()

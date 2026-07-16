@@ -1,7 +1,7 @@
 # Henex.uz — Project Specification
 
 Distributor website for **HENEX (Guangzhou) Technology Co., Ltd** barcode scanners in Uzbekistan.
-Stack: **Laravel 11 · Livewire 3 · Tailwind CSS 3 · Alpine.js · MySQL 8**
+Stack: **Laravel 13 · PHP 8.4 · Livewire 3 · Tailwind CSS 3 · Alpine.js · MySQL 8**
 
 ---
 
@@ -27,7 +27,8 @@ Stack: **Laravel 11 · Livewire 3 · Tailwind CSS 3 · Alpine.js · MySQL 8**
 ## 2. Tech Stack
 
 ```
-Laravel 11
+PHP 8.4
+Laravel 13
 ├── Livewire 3            # reactive frontend + admin components
 ├── Alpine.js 3           # UI micro-interactions (bundled with Livewire)
 ├── Tailwind CSS 3        # utility-first styling (frontend + admin)
@@ -46,6 +47,14 @@ Key packages:
 ├── intervention/image-laravel           # image resize/webp conversion
 └── livewire/sortable                    # drag-and-drop sort in admin
 ```
+
+### PHP 8.4 features used in this project
+- **Property hooks** — use `get`/`set` hooks on model properties where applicable instead of accessor/mutator methods
+- **Asymmetric visibility** — `public protected(set)` for read-only-from-outside model fields
+- **`array_find()` / `array_any()` / `array_all()`** — native array helpers instead of `array_filter` + `reset`
+- **`new` in initializers** — `public Settings $settings = new Settings()` without extra constructor boilerplate
+- **Explicit nullable types** — always use `?Type` instead of `Type = null` (implicit nullable is deprecated in 8.4)
+- **`#[\Deprecated]` attribute** — mark any legacy helper methods instead of `@deprecated` docblock
 
 ### Why custom admin over Filament?
 - Full visual control — your own design system, no overrides
@@ -794,8 +803,8 @@ henex-uz/
 ## 12. Installation Commands
 
 ```bash
-# Create project
-composer create-project laravel/laravel henex-uz
+# Create project (requires PHP 8.4)
+composer create-project laravel/laravel:^13 henex-uz
 cd henex-uz
 
 # Core packages
@@ -898,14 +907,13 @@ Route::middleware(['auth', 'role:super_admin'])->prefix('admin')->name('admin.')
 ## 14. Deployment Checklist
 
 ```
-Server: Ubuntu 22.04 / nginx / PHP 8.3 / MySQL 8 / Redis
+Server: Ubuntu 22.04 / nginx / PHP 8.4 / MySQL 8 / Redis
 SSL: Let's Encrypt (certbot)
 Queue: supervisor + Laravel queue worker (database or redis driver)
 
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
-php artisan icons:cache        # Filament
 php artisan optimize
 
 Cron (crontab -e):

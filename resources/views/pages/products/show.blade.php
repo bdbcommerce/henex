@@ -22,8 +22,8 @@
 @section('schema')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Product",
+    "@@context": "https://schema.org",
+    "@@type": "Product",
     "name": "{{ addslashes($product->name) }}",
     "image": [
         @foreach($product->getMedia('gallery') as $media)
@@ -33,14 +33,14 @@
     "description": "{{ addslashes(strip_tags($product->short_description)) }}",
     "sku": "{{ $product->sku }}",
     "brand": {
-        "@type": "Brand",
+        "@@type": "Brand",
         "name": "HENEX"
     },
     "offers": {
-        "@type": "Offer",
+        "@@type": "Offer",
         "availability": "https://schema.org/InStoreOnly",
         "seller": {
-            "@type": "Organization",
+            "@@type": "Organization",
             "name": "Henex Uzbekistan"
         }
     }

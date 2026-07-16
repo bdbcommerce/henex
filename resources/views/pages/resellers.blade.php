@@ -48,7 +48,7 @@
 {{-- Reseller Finder Component --}}
 <section class="py-10">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        @livewire('frontend.reseller-finder', ['regionSlug' => request('region')])
+        @livewire('frontend.reseller-finder', ['regionSlug' => request('region', '')])
     </div>
 </section>
 

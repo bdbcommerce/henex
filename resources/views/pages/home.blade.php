@@ -4,63 +4,7 @@
 @section('description', 'Buy HENEX barcode scanners in Uzbekistan. Official distributor with warranty, technical support, and fast delivery.')
 
 @section('content')
-<!-- ===== HERO CAROUSEL ===== -->
-<section class="relative h-[500px] md:h-[600px] overflow-hidden bg-black">
-    <div class="swiper-container swiper-banner h-full">
-        <div class="swiper-wrapper">
-            <!-- Slide 1 -->
-            <div class="swiper-slide h-full flex items-center justify-center relative">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-10"></div>
-                <div class="absolute inset-0 bg-gradient-to-b from-brand/5 to-neutral-950/20 z-10"></div>
-                <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full">
-                    <div class="max-w-2xl">
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Official HENEX Distributor</h1>
-                        <p class="text-lg md:text-xl text-gray-200 mb-8">Trusted barcode scanning solutions for Uzbekistan</p>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="{{ route('products.index') }}" class="bg-brand hover:bg-brand-dark text-white px-8 py-3 rounded-lg font-semibold transition inline-block">View Products</a>
-                            <a href="{{ route('resellers') }}" class="bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-lg font-semibold transition backdrop-blur-sm inline-block border border-white/40">Find Reseller</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="swiper-slide h-full flex items-center justify-center relative">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-10"></div>
-                <div class="absolute inset-0 bg-gradient-to-b from-brand/5 to-neutral-950/20 z-10"></div>
-                <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full">
-                    <div class="max-w-2xl">
-                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Wireless Solutions</h2>
-                        <p class="text-lg md:text-xl text-gray-200 mb-8">2D & 1D wireless barcode scanners for your business</p>
-                        <a href="{{ route('products.index') }}" class="bg-brand hover:bg-brand-dark text-white px-8 py-3 rounded-lg font-semibold transition inline-block">Explore Wireless</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="swiper-slide h-full flex items-center justify-center relative">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-10"></div>
-                <div class="absolute inset-0 bg-gradient-to-b from-brand/5 to-neutral-950/20 z-10"></div>
-                <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full">
-                    <div class="max-w-2xl">
-                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Industrial Grade</h2>
-                        <p class="text-lg md:text-xl text-gray-200 mb-8">Durable scanners for manufacturing & warehousing</p>
-                        <a href="{{ route('products.index') }}" class="bg-brand hover:bg-brand-dark text-white px-8 py-3 rounded-lg font-semibold transition inline-block">View Industrial</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="swiper-pagination absolute bottom-6 left-1/2 -translate-x-1/2 z-20"></div>
-
-        <button class="swiper-button-prev absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition backdrop-blur-sm hidden md:flex">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-        </button>
-        <button class="swiper-button-next absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition backdrop-blur-sm hidden md:flex">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-        </button>
-    </div>
-</section>
+@livewire('frontend.hero-slider')
 
 <!-- ===== TRUST BADGES ===== -->
 <section class="py-16 bg-white">
@@ -266,28 +210,4 @@
     </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        new Swiper('.swiper-banner', {
-            autoplay: {
-                delay: 6000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            loop: true,
-            effect: 'fade',
-            fadeEffect: { crossFade: true },
-        });
-    });
-</script>
 @endsection

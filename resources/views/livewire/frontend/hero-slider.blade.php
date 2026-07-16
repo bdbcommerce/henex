@@ -1,64 +1,90 @@
-<div x-data="{
-    active: 0,
-    total: {{ count($slides) }},
-    autoplay: null,
-    init() {
-        if (this.total > 1) {
-            this.autoplay = setInterval(() => { this.active = (this.active + 1) % this.total; }, 5000);
-        }
-    },
-    go(i) { this.active = i; clearInterval(this.autoplay); }
-}" class="relative overflow-hidden bg-neutral-950 min-h-[520px] flex items-center">
+<div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-    @forelse($slides as $i => $slide)
-    <div x-show="active === {{ $i }}"
-         x-transition:enter="transition-opacity duration-700"
-         x-transition:enter-start="opacity-0"
-         x-transition:enter-end="opacity-100"
-         x-transition:leave="transition-opacity duration-300"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0"
-         class="absolute inset-0 flex items-center">
-        @if($slide->getFirstMediaUrl('slide'))
-        <img src="{{ $slide->getFirstMediaUrl('slide') }}" alt="{{ $slide->getTranslation('title', app()->getLocale()) }}"
-             class="absolute inset-0 w-full h-full object-cover opacity-40">
-        @endif
-        <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <h2 class="text-4xl sm:text-6xl font-extrabold text-white mb-4 leading-tight max-w-2xl">
-                {{ $slide->getTranslation('title', app()->getLocale()) }}
-            </h2>
-            @if($slide->getTranslation('subtitle', app()->getLocale()))
-            <p class="text-gray-300 text-xl mb-8 max-w-xl">
-                {{ $slide->getTranslation('subtitle', app()->getLocale()) }}
-            </p>
-            @endif
-            @if($slide->link)
-            <a href="{{ $slide->link }}"
-               class="inline-block bg-brand hover:bg-brand-dark text-white font-bold py-4 px-8 rounded-xl transition text-lg">
-                {{ $slide->getTranslation('button_text', app()->getLocale()) ?: __('site.cta.learn_more') }}
-            </a>
-            @endif
+<section wire:ignore class="banner relative overflow-hidden bg-black">
+
+    <div class="swiper-container swiper-banner">
+        <div class="swiper-wrapper">
+
+        @forelse($slides as $slide)
+        @if(!($slide instanceof \App\Models\Slide)) @continue @endif
+
+            <div class="swiper-slide">
+                @if($slide->link)
+                    <a href="{{ $slide->link }}">
+                @endif
+                    @if($slide->getFirstMediaUrl('slide'))
+                        <img src="{{ $slide->getFirstMediaUrl('slide') }}" alt="{{ $slide->getTranslation('title', app()->getLocale()) }}" class="w-full block">
+                    @endif
+                @if($slide->link)
+                    </a>
+                @endif
+            </div>
+
+        @empty
+
+            {{-- ── Exact copies of henex.cn homepage slides ── --}}
+
+            <div class="swiper-slide">
+                <a href="{{ route('products.index') }}">
+                    <img src="https://www.henex.cn/uploadfile/202602/c967dfa09766944.gif" alt="H310RC" class="w-full block">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="{{ route('products.index') }}">
+                    <img src="https://www.henex.cn/uploadfile/202405/24800cd49e69.gif" alt="H8000" class="w-full block">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="{{ route('products.index') }}">
+                    <img src="https://www.henex.cn/uploadfile/202409/1982a786db0bf60.gif" alt="HENEX" class="w-full block">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="{{ route('products.index') }}">
+                    <img src="https://www.henex.cn/uploadfile/202405/1a4136843b5dfb6.gif" alt="H500" class="w-full block">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="{{ route('products.index') }}">
+                    <img src="https://www.henex.cn/uploadfile/202405/4dad08ab53d52e7.gif" alt="H4" class="w-full block">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="{{ route('products.index') }}">
+                    <img src="https://www.henex.cn/uploadfile/202405/aec5a79651d6b8c.gif" alt="H5" class="w-full block">
+                </a>
+            </div>
+
+        @endforelse
+
         </div>
-    </div>
-    @empty
-    {{-- Fallback hero when no slides --}}
-    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <h2 class="text-4xl sm:text-6xl font-extrabold text-white mb-4">{{ __('site.hero.title') }}</h2>
-        <p class="text-gray-300 text-xl mb-8">{{ __('site.hero.subtitle') }}</p>
-        <a href="{{ route('products.index') }}" class="inline-block bg-brand hover:bg-brand-dark text-white font-bold py-4 px-8 rounded-xl transition text-lg">
-            {{ __('site.cta.view_products') }}
-        </a>
-    </div>
-    @endforelse
 
-    {{-- Dots navigation --}}
-    @if(count($slides) > 1)
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-        @foreach($slides as $i => $slide)
-        <button @click="go({{ $i }})"
-                :class="active === {{ $i }} ? 'bg-brand w-6' : 'bg-white/40 w-2'"
-                class="h-2 rounded-full transition-all duration-300"></button>
-        @endforeach
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
-    @endif
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+(function () {
+    function init() {
+        if (typeof Swiper === 'undefined') { setTimeout(init, 80); return; }
+        new Swiper('.swiper-banner', {
+            loop: true,
+            speed: 600,
+            autoplay: { delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        });
+    }
+    document.addEventListener('DOMContentLoaded', init);
+})();
+</script>
 </div>

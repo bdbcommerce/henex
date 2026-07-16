@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
                     ->get()
             );
             $view->with('regions',
-                Region::orderBy('sort_order')->limit(5)->get()
+                Region::orderBy('sort_order')->get()
             );
         });
     }

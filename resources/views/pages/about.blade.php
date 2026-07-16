@@ -9,14 +9,14 @@
 @section('schema')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Organization",
+    "@@context": "https://schema.org",
+    "@@type": "Organization",
     "name": "Henex Uzbekistan",
     "url": "{{ url('/') }}",
     "logo": "{{ asset('images/logo.png') }}",
     "description": "{{ __('site.about.meta_description') }}",
     "address": {
-        "@type": "PostalAddress",
+        "@@type": "PostalAddress",
         "addressCountry": "UZ",
         "addressLocality": "Tashkent"
     },
