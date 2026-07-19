@@ -5,7 +5,19 @@ use Livewire\Component;
 class SettingsForm extends Component
 {
     public array $settings = [];
-    protected array $keys = ['site_phone','site_phone2','site_email','address_uz','address_ru','address_en','working_hours','social_telegram','social_instagram','social_youtube','social_whatsapp','yandex_map_embed'];
+    protected array $keys = [
+        // Contacts
+        'site_phone', 'site_phone2', 'site_email', 'working_hours',
+        'address_uz', 'address_ru', 'address_en',
+        // Social / messaging
+        'social_telegram', 'social_whatsapp', 'social_instagram', 'social_youtube',
+        // Integrations
+        'yandex_map_embed',
+        // Analytics
+        'analytics_ga4_id', 'analytics_yandex_id',
+        // Search console verification
+        'google_verification', 'yandex_verification',
+    ];
     public function mount(): void
     {
         foreach ($this->keys as $key) {

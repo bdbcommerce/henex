@@ -1,7 +1,24 @@
 @extends('layouts.app')
 
 @section('title', 'HENEX - Official Barcode Scanner Distributor in Uzbekistan')
-@section('description', 'Buy HENEX barcode scanners in Uzbekistan. Official distributor with warranty, technical support, and fast delivery.')
+
+@section('meta')
+    <meta name="description" content="Buy HENEX barcode scanners in Uzbekistan. Official distributor with warranty, technical support, and fast delivery.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="HENEX Uzbekistan — Official Barcode Scanner Distributor">
+    <meta property="og:description" content="Buy HENEX barcode scanners in Uzbekistan. Official distributor with warranty, technical support, and fast delivery.">
+    <meta property="og:image" content="{{ asset('images/henex-og.jpg') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="HENEX Uzbekistan">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="HENEX Uzbekistan — Official Barcode Scanner Distributor">
+    <meta property="twitter:description" content="Buy HENEX barcode scanners in Uzbekistan. Official distributor with warranty, technical support, and fast delivery.">
+    <meta property="twitter:image" content="{{ asset('images/henex-og.jpg') }}">
+    <link rel="canonical" href="{{ url()->current() }}">
+@endsection
 
 @section('content')
 @livewire('frontend.hero-slider')
