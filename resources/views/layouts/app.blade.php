@@ -78,17 +78,19 @@
                 <div x-show="open" x-transition:enter="transition ease-out duration-150"
                      x-transition:enter-start="opacity-0 -translate-y-1"
                      x-transition:enter-end="opacity-100 translate-y-0"
-                     class="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
-                    <a href="{{ route('products.index') }}"
-                       class="block px-5 py-2.5 text-sm font-semibold text-brand hover:bg-orange-50 transition border-b border-gray-100 mb-1">
-                        {{ __('site.nav.all_products') ?? 'All Products' }} →
-                    </a>
-                    @foreach($categories ?? [] as $category)
-                        <a href="{{ route('products.category', $category->slug) }}"
-                           class="block px-5 py-2 text-sm text-gray-700 hover:text-brand hover:bg-gray-50 transition">
-                            {{ $category->getTranslation('name', app()->getLocale()) }}
+                     class="absolute top-full left-0 w-64 z-50 pt-1">
+                    <div class="bg-white rounded-xl shadow-xl border border-gray-100 py-2">
+                        <a href="{{ route('products.index') }}"
+                           class="block px-5 py-2.5 text-sm font-semibold text-brand hover:bg-orange-50 transition border-b border-gray-100 mb-1">
+                            {{ __('site.nav.all_products') ?? 'All Products' }} →
                         </a>
-                    @endforeach
+                        @foreach($categories ?? [] as $category)
+                            <a href="{{ route('products.category', $category->slug) }}"
+                               class="block px-5 py-2 text-sm text-gray-700 hover:text-brand hover:bg-gray-50 transition">
+                                {{ $category->getTranslation('name', app()->getLocale()) }}
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
@@ -104,20 +106,22 @@
                 <div x-show="open" x-transition:enter="transition ease-out duration-150"
                      x-transition:enter-start="opacity-0 -translate-y-1"
                      x-transition:enter-end="opacity-100 translate-y-0"
-                     class="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
-                    @foreach([
-                        'retail'     => ['site.industry.retail',     'Retail'],
-                        'medical'    => ['site.industry.medical',     'Medical'],
-                        'government' => ['site.industry.government',  'Government'],
-                        'manufacturing' => ['site.industry.manufacturing', 'Manufacturing'],
-                        'logistics'  => ['site.industry.logistics',   'Warehousing & Logistics'],
-                        'transport'  => ['site.industry.transport',   'Traffic & Self-service'],
-                    ] as $slug => [$key, $default])
-                        <a href="{{ route('products.index', ['industry' => $slug]) }}"
-                           class="block px-5 py-2 text-sm text-gray-700 hover:text-brand hover:bg-gray-50 transition">
-                            {{ __($key) !== $key ? __($key) : $default }}
-                        </a>
-                    @endforeach
+                     class="absolute top-full left-0 w-56 z-50 pt-1">
+                    <div class="bg-white rounded-xl shadow-xl border border-gray-100 py-2">
+                        @foreach([
+                            'retail'        => ['site.industry.retail',        'Retail'],
+                            'medical'       => ['site.industry.medical',        'Medical'],
+                            'government'    => ['site.industry.government',     'Government'],
+                            'manufacturing' => ['site.industry.manufacturing',  'Manufacturing'],
+                            'logistics'     => ['site.industry.logistics',      'Warehousing & Logistics'],
+                            'transport'     => ['site.industry.transport',      'Traffic & Self-service'],
+                        ] as $slug => [$key, $default])
+                            <a href="{{ route('products.index', ['industry' => $slug]) }}"
+                               class="block px-5 py-2 text-sm text-gray-700 hover:text-brand hover:bg-gray-50 transition">
+                                {{ __($key) !== $key ? __($key) : $default }}
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 

@@ -50,6 +50,37 @@
             </div>
         </header>
 
+        {{-- Toast notifications --}}
+        <div x-data="{
+                toasts: [],
+                add(msg, type = 'success') {
+                    const id = Date.now();
+                    this.toasts.push({ id, msg, type });
+                    setTimeout(() => this.remove(id), 3500);
+                },
+                remove(id) { this.toasts = this.toasts.filter(t => t.id !== id); },
+                init() {
+                    @if(session('success')) this.add('{{ addslashes(session('success')) }}', 'success'); @endif
+                    @if(session('error'))   this.add('{{ addslashes(session('error')) }}', 'error'); @endif
+                }
+             }"
+             x-on:toast.window="add($event.detail.message, $event.detail.type ?? 'success')"
+             class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
+            <template x-for="t in toasts" :key="t.id">
+                <div x-show="true"
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="opacity-0 translate-x-4"
+                     x-transition:enter-end="opacity-100 translate-x-0"
+                     x-transition:leave="transition ease-in duration-150"
+                     x-transition:leave-end="opacity-0"
+                     :class="t.type === 'error' ? 'bg-red-600' : t.type === 'warning' ? 'bg-yellow-500' : 'bg-green-600'"
+                     class="pointer-events-auto flex items-center gap-3 px-5 py-3 rounded-xl text-white text-sm font-medium shadow-lg min-w-52">
+                    <span x-text="t.msg" class="flex-1"></span>
+                    <button @click="remove(t.id)" class="opacity-70 hover:opacity-100 text-lg leading-none">&times;</button>
+                </div>
+            </template>
+        </div>
+
         {{-- Content --}}
         <main class="flex-1 overflow-y-auto p-6">
             {{ $slot }}

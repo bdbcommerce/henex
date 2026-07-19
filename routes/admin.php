@@ -3,7 +3,7 @@
 use App\Livewire\Admin;
 
 // Shared: super_admin + editor
-Route::middleware(['auth', 'role:super_admin,editor'])->group(function () {
+Route::middleware(['auth', 'role:super_admin|editor'])->group(function () {
     Route::get('/', Admin\Dashboard::class)->name('dashboard');
 
     Route::get('/products', Admin\Products\ProductIndex::class)->name('products.index');
