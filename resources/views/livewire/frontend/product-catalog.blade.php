@@ -1,11 +1,21 @@
 <div x-data="{ view: 'grid' }">
-    <div class="flex flex-col lg:flex-row gap-8">
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
 
         {{-- Sidebar --}}
-        <aside class="lg:w-56 flex-shrink-0">
+        <aside class="lg:w-56 flex-shrink-0"
+               x-data="{ mobileOpen: window.innerWidth >= 1024 }"
+               @resize.window="mobileOpen = window.innerWidth >= 1024">
             <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
-                <h3 class="font-bold text-neutral-950 text-sm mb-3 uppercase tracking-wide">{{ __('site.products.categories') }}</h3>
-                <div class="space-y-1">
+                <button type="button" @click="mobileOpen = !mobileOpen"
+                        class="lg:hidden w-full flex items-center justify-between">
+                    <h3 class="font-bold text-neutral-950 text-sm uppercase tracking-wide">{{ __('site.products.categories') }}</h3>
+                    <svg class="w-4 h-4 transition-transform" :class="mobileOpen ? 'rotate-180' : ''"
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <h3 class="hidden lg:block font-bold text-neutral-950 text-sm mb-3 uppercase tracking-wide">{{ __('site.products.categories') }}</h3>
+                <div class="mt-3 lg:mt-0 space-y-1" x-show="mobileOpen" x-cloak>
                     <a href="{{ route('products.index') }}"
                        class="block w-full text-left px-3 py-2 rounded-lg text-sm transition {{ $category === '' ? 'bg-brand text-white font-semibold' : 'hover:bg-gray-50 text-gray-700' }}">
                         {{ __('site.products.all_categories') }}
@@ -37,7 +47,7 @@
                         </svg>
                         <input wire:model.live.debounce.300ms="search" type="text"
                                placeholder="{{ __('site.products.search_placeholder') }}"
-                               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-brand focus:border-brand shadow-sm">
+                               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-base sm:text-sm focus:ring-brand focus:border-brand shadow-sm">
                     </div>
                 </div>
                 <select wire:model.live="sort" class="rounded-xl border-gray-300 text-sm shadow-sm focus:ring-brand focus:border-brand py-2.5">
@@ -69,6 +79,7 @@
                         @if($product->getFirstMediaUrl('gallery'))
                         <img src="{{ $product->getFirstMediaUrl('gallery', 'thumb') ?: $product->getFirstMediaUrl('gallery') }}"
                              alt="{{ $product->name }}"
+                             loading="lazy"
                              class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500">
                         @else
                         <div class="w-full h-full flex items-center justify-center text-gray-200">
@@ -111,7 +122,7 @@
                 <div class="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex items-center gap-4 p-4 group">
                     <div class="w-20 h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden">
                         @if($product->getFirstMediaUrl('gallery'))
-                        <img src="{{ $product->getFirstMediaUrl('gallery') }}" alt="{{ $product->name }}" class="w-full h-full object-contain p-1">
+                        <img src="{{ $product->getFirstMediaUrl('gallery') }}" alt="{{ $product->name }}" loading="lazy" class="w-full h-full object-contain p-1">
                         @endif
                     </div>
                     <div class="flex-1 min-w-0">

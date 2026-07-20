@@ -71,7 +71,7 @@
             <div x-data="{ activeImg: '{{ $product->getFirstMediaUrl('gallery') }}' }">
 
                 {{-- Main Image --}}
-                <div class="bg-gray-50 rounded-2xl overflow-hidden aspect-square flex items-center justify-center p-6 mb-4 border border-gray-100">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden aspect-square flex items-center justify-center p-2 sm:p-4 md:p-6 mb-4 border border-gray-100">
                     <img :src="activeImg"
                          alt="{{ $product->name }}"
                          class="max-h-full max-w-full object-contain transition-opacity duration-300">
@@ -79,7 +79,7 @@
 
                 {{-- Thumbnails --}}
                 @if($product->getMedia('gallery')->count() > 1)
-                <div class="grid grid-cols-5 gap-2">
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
                     @foreach($product->getMedia('gallery') as $media)
                     <button type="button"
                             @click="activeImg = '{{ $media->getUrl() }}'"
@@ -178,14 +178,14 @@
 
                 {{-- Quick specs preview (first 4 specs) --}}
                 @if($product->specifications->isNotEmpty())
-                <div class="border border-gray-200 rounded-xl overflow-hidden">
-                    <table class="w-full text-sm">
+                <div class="border border-gray-200 rounded-xl overflow-x-auto">
+                    <table class="w-full text-sm min-w-[300px]">
                         @foreach($product->specifications->take(4) as $spec)
                         <tr class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }}">
-                            <td class="py-3 px-4 font-semibold text-gray-700 w-2/5 border-b border-gray-100">
+                            <td class="py-3 px-2 sm:px-4 font-semibold text-gray-700 w-2/5 border-b border-gray-100">
                                 {{ $spec->getTranslation('key', app()->getLocale()) }}
                             </td>
-                            <td class="py-3 px-4 text-gray-600 border-b border-gray-100">
+                            <td class="py-3 px-2 sm:px-4 text-gray-600 border-b border-gray-100">
                                 {{ $spec->getTranslation('value', app()->getLocale()) }}
                             </td>
                         </tr>
@@ -226,15 +226,15 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-2xl font-bold text-neutral-950 mb-6">{{ __('site.product.specifications') }}</h2>
-            <div class="border border-gray-200 rounded-2xl overflow-hidden">
-                <table class="w-full text-sm">
+            <div class="border border-gray-200 rounded-2xl overflow-x-auto">
+                <table class="w-full text-sm min-w-[360px]">
                     <tbody>
                         @foreach($product->specifications as $spec)
                         <tr class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }}">
-                            <td class="py-3.5 px-5 font-semibold text-gray-700 w-2/5 border-b border-gray-100">
+                            <td class="py-3.5 px-3 sm:px-5 font-semibold text-gray-700 w-2/5 border-b border-gray-100">
                                 {{ $spec->getTranslation('key', app()->getLocale()) }}
                             </td>
-                            <td class="py-3.5 px-5 text-gray-600 border-b border-gray-100">
+                            <td class="py-3.5 px-3 sm:px-5 text-gray-600 border-b border-gray-100">
                                 {{ $spec->getTranslation('value', app()->getLocale()) }}
                             </td>
                         </tr>

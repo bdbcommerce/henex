@@ -63,10 +63,10 @@
 </section>
 
 <!-- ===== FEATURED CATEGORIES ===== -->
-<section class="py-20 bg-gray-50">
+<section class="py-12 md:py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-neutral-950 mb-4">Product Categories</h2>
+        <div class="text-center mb-8 md:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-950 mb-4">Product Categories</h2>
             <p class="text-gray-600 text-lg">Choose from our comprehensive range of barcode solutions</p>
         </div>
 
@@ -91,10 +91,10 @@
 </section>
 
 <!-- ===== FEATURED PRODUCTS ===== -->
-<section class="py-20 bg-white">
+<section class="py-12 md:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-neutral-950 mb-4">Featured Products</h2>
+        <div class="text-center mb-8 md:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-950 mb-4">Featured Products</h2>
             <p class="text-gray-600 text-lg">Our most popular and recommended barcode scanners</p>
         </div>
 
@@ -126,10 +126,10 @@
 </section>
 
 <!-- ===== INDUSTRIES ===== -->
-<section class="py-20 bg-gray-50">
+<section class="py-12 md:py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-neutral-950 mb-4">Industry Solutions</h2>
+        <div class="text-center mb-8 md:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-950 mb-4">Industry Solutions</h2>
             <p class="text-gray-600 text-lg">Proven solutions for every sector</p>
         </div>
 
@@ -174,10 +174,10 @@
 </section>
 
 <!-- ===== LATEST NEWS ===== -->
-<section class="py-20 bg-white">
+<section class="py-12 md:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-neutral-950 mb-4">Latest News</h2>
+        <div class="text-center mb-8 md:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-950 mb-4">Latest News</h2>
             <p class="text-gray-600 text-lg">Stay updated with HENEX news and industry insights</p>
         </div>
 

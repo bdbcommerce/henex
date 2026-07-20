@@ -39,7 +39,7 @@
 {{-- ─── TOP UTILITY BAR ─────────────────────────────────────────────────── --}}
 <div class="bg-neutral-900 text-gray-300 text-xs py-2">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <div class="flex items-center gap-5">
+        <div class="flex items-center gap-2 sm:gap-5">
             <a href="tel:+998901234567" class="flex items-center gap-1.5 hover:text-white transition">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"></path></svg>
                 +998 90 123 45 67
@@ -352,7 +352,7 @@
 
         <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
             <p>&copy; {{ date('Y') }} HENEX Uzbekistan. {{ __('site.all_rights_reserved') ?? 'All rights reserved.' }}</p>
-            <nav class="flex items-center gap-6">
+            <nav class="flex items-center gap-3 sm:gap-6">
                 <a href="{{ route('about') }}" class="hover:text-white transition">{{ __('site.nav.about') }}</a>
                 <a href="{{ route('contact') }}" class="hover:text-white transition">{{ __('site.nav.contact') }}</a>
                 <a href="{{ route('resellers') }}" class="hover:text-white transition">{{ __('site.nav.where_to_buy') }}</a>
