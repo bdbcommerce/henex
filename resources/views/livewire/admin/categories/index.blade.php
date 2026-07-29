@@ -1,7 +1,7 @@
 <div>
     <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-bold text-neutral-950">Categories</h2>
-        <a href="{{ route('admin.categories.create') }}" class="bg-brand text-white font-semibold px-4 py-2 rounded-lg text-sm hover:bg-brand-dark transition">+ Add Category</a>
+        <a href="{{ route('admin.categories.create') }}" class="inline-flex items-center gap-1.5 bg-brand text-white font-semibold px-4 py-2 rounded-lg text-sm hover:bg-brand-dark transition"><x-admin.icon name="plus" class="w-4 h-4" /> Add Category</a>
     </div>
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm">
         <div class="p-4 border-b border-gray-100">
@@ -14,10 +14,22 @@
                 <tr class="hover:bg-gray-50">
                     <td class="px-4 py-3 font-semibold">{{ $cat->getTranslation('name','en') }}</td>
                     <td class="px-4 py-3 font-mono text-gray-500">{{ $cat->slug }}</td>
-                    <td class="px-4 py-3">{{ $cat->is_active ? '✅' : '❌' }}</td>
-                    <td class="px-4 py-3 flex gap-2">
-                        <a href="{{ route('admin.categories.edit', $cat) }}" class="text-brand hover:underline">Edit</a>
-                        <button wire:click="delete({{ $cat->id }})" wire:confirm="Delete?" class="text-red-500 hover:underline">Delete</button>
+                    <td class="px-4 py-3">
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full {{ $cat->is_active ? 'bg-green-50 text-green-700' : 'bg-gray-100 text-gray-500' }}">
+                            {{ $cat->is_active ? 'Active' : 'Inactive' }}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3">
+                        <div class="flex gap-2">
+                            <a href="{{ route('admin.categories.edit', $cat) }}"
+                               class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition">
+                                <x-admin.icon name="edit" class="w-3.5 h-3.5" /> Edit
+                            </a>
+                            <button wire:click="delete({{ $cat->id }})" wire:confirm="Delete?"
+                                    class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-lg bg-red-50 text-red-700 hover:bg-red-100 transition">
+                                <x-admin.icon name="trash" class="w-3.5 h-3.5" /> Delete
+                            </button>
+                        </div>
                     </td>
                 </tr>
                 @empty

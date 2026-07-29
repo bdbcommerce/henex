@@ -12,23 +12,41 @@
 <div x-data="{ sidebarOpen: true }" class="flex h-screen overflow-hidden">
 
     {{-- Sidebar --}}
-    <aside :class="sidebarOpen ? 'w-56' : 'w-0'" class="bg-neutral-950 text-white flex-shrink-0 overflow-hidden transition-all duration-300 flex flex-col">
-        <div class="px-5 py-4 border-b border-white/10">
-            <span class="text-brand font-bold text-lg">HENEX</span>
-            <span class="text-gray-400 text-xs ml-1">Admin</span>
+    <aside :class="sidebarOpen ? 'w-60' : 'w-0'" class="bg-neutral-950 text-white flex-shrink-0 overflow-hidden transition-all duration-300 flex flex-col">
+        <div class="px-5 py-4 border-b border-white/10 flex items-baseline gap-1.5">
+            <span class="text-brand font-bold text-lg tracking-tight">HENEX</span>
+            <span class="text-gray-500 text-xs">Admin</span>
         </div>
-        <nav class="flex-1 py-4 px-3 space-y-1 text-sm overflow-y-auto">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 {{ request()->routeIs('admin.dashboard') ? 'bg-white/10 font-semibold' : '' }}">📊 Dashboard</a>
-            <a href="{{ route('admin.products.index') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 {{ request()->routeIs('admin.products.*') ? 'bg-white/10 font-semibold' : '' }}">📦 Products</a>
-            <a href="{{ route('admin.categories.index') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 {{ request()->routeIs('admin.categories.*') ? 'bg-white/10 font-semibold' : '' }}">🗂 Categories</a>
-            <a href="{{ route('admin.resellers.index') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 {{ request()->routeIs('admin.resellers.*') ? 'bg-white/10 font-semibold' : '' }}">🏪 Resellers</a>
-            <a href="{{ route('admin.articles.index') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 {{ request()->routeIs('admin.articles.*') ? 'bg-white/10 font-semibold' : '' }}">📰 Articles</a>
-            <a href="{{ route('admin.slides.index') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 {{ request()->routeIs('admin.slides.*') ? 'bg-white/10 font-semibold' : '' }}">🖼 Slides</a>
-            <a href="{{ route('admin.inquiries.index') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 {{ request()->routeIs('admin.inquiries.*') ? 'bg-white/10 font-semibold' : '' }}">💬 Inquiries</a>
+        <nav class="flex-1 py-4 px-3 space-y-0.5 text-sm overflow-y-auto">
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.dashboard') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                <x-admin.icon name="dashboard" class="w-[18px] h-[18px] shrink-0" /> Dashboard
+            </a>
+            <a href="{{ route('admin.products.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.products.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                <x-admin.icon name="products" class="w-[18px] h-[18px] shrink-0" /> Products
+            </a>
+            <a href="{{ route('admin.categories.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.categories.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                <x-admin.icon name="categories" class="w-[18px] h-[18px] shrink-0" /> Categories
+            </a>
+            <a href="{{ route('admin.resellers.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.resellers.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                <x-admin.icon name="resellers" class="w-[18px] h-[18px] shrink-0" /> Resellers
+            </a>
+            <a href="{{ route('admin.articles.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.articles.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                <x-admin.icon name="articles" class="w-[18px] h-[18px] shrink-0" /> Articles
+            </a>
+            <a href="{{ route('admin.slides.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.slides.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                <x-admin.icon name="slides" class="w-[18px] h-[18px] shrink-0" /> Slides
+            </a>
+            <a href="{{ route('admin.inquiries.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.inquiries.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                <x-admin.icon name="inquiries" class="w-[18px] h-[18px] shrink-0" /> Inquiries
+            </a>
             @role('super_admin')
-            <div class="pt-3 border-t border-white/10 mt-3 space-y-1">
-                <a href="{{ route('admin.settings') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 {{ request()->routeIs('admin.settings') ? 'bg-white/10 font-semibold' : '' }}">⚙️ Settings</a>
-                <a href="{{ route('admin.users.index') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 {{ request()->routeIs('admin.users.*') ? 'bg-white/10 font-semibold' : '' }}">👥 Users</a>
+            <div class="pt-3 mt-3 border-t border-white/10 space-y-0.5">
+                <a href="{{ route('admin.settings') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.settings') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                    <x-admin.icon name="settings" class="w-[18px] h-[18px] shrink-0" /> Settings
+                </a>
+                <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.users.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                    <x-admin.icon name="users" class="w-[18px] h-[18px] shrink-0" /> Users
+                </a>
             </div>
             @endrole
         </nav>
@@ -38,14 +56,21 @@
     <div class="flex-1 flex flex-col overflow-hidden">
         {{-- Topbar --}}
         <header class="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between flex-shrink-0">
-            <button @click="sidebarOpen = !sidebarOpen" class="text-gray-500 hover:text-gray-800">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <button @click="sidebarOpen = !sidebarOpen" class="text-gray-400 hover:text-gray-700 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
-            <div class="flex items-center gap-4">
-                <a href="{{ route('home') }}" target="_blank" class="text-xs text-gray-500 hover:text-brand transition">← View site</a>
+            <div class="flex items-center gap-2">
+                <a href="{{ route('home') }}" target="_blank"
+                   class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-brand px-3 py-1.5 rounded-lg hover:bg-gray-50 transition">
+                    <x-admin.icon name="external" class="w-3.5 h-3.5" /> View site
+                </a>
+                <div class="w-px h-5 bg-gray-200 mx-1"></div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="text-xs text-gray-500 hover:text-red-500 transition">Logout</button>
+                    <button type="submit"
+                            class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-50 transition">
+                        <x-admin.icon name="logout" class="w-3.5 h-3.5" /> Logout
+                    </button>
                 </form>
             </div>
         </header>

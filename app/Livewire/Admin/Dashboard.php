@@ -20,42 +20,42 @@ class Dashboard extends Component
             [
                 'label' => 'Products',
                 'value' => Product::count(),
-                'icon' => '📦',
+                'icon' => 'products',
                 'change' => '+3 this week',
                 'color' => 'blue'
             ],
             [
                 'label' => 'Categories',
                 'value' => Category::count(),
-                'icon' => '🗂',
+                'icon' => 'categories',
                 'change' => 'No change',
                 'color' => 'purple'
             ],
             [
                 'label' => 'New Inquiries',
                 'value' => Inquiry::where('is_read', false)->count(),
-                'icon' => '💬',
+                'icon' => 'inquiries',
                 'change' => 'Needs attention',
                 'color' => 'red'
             ],
             [
                 'label' => 'Active Resellers',
                 'value' => Reseller::where('is_active', true)->count(),
-                'icon' => '🏪',
+                'icon' => 'resellers',
                 'change' => 'Across 14 regions',
                 'color' => 'green'
             ],
             [
                 'label' => 'Published Articles',
                 'value' => Article::where('is_published', true)->count(),
-                'icon' => '📰',
+                'icon' => 'articles',
                 'change' => '+2 this month',
                 'color' => 'yellow'
             ],
             [
                 'label' => 'Admin Users',
                 'value' => User::count(),
-                'icon' => '👥',
+                'icon' => 'users',
                 'change' => 'All active',
                 'color' => 'gray'
             ],

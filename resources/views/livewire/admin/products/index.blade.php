@@ -7,7 +7,7 @@
                 <p class="text-gray-600 text-sm mt-1">Manage all product listings and inventory</p>
             </div>
             <a href="{{ route('admin.products.create') }}" class="bg-brand hover:bg-brand-dark text-white px-6 py-2 rounded-lg font-medium transition inline-flex items-center gap-2">
-                <span>+</span> Add New Product
+                <x-admin.icon name="plus" class="w-4 h-4" /> Add New Product
             </a>
         </div>
     </div>
@@ -75,23 +75,25 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 text-center">
-                            <button wire:click="toggleActive({{ $product->id }})" class="text-lg hover:scale-110 transition">
-                                {{ $product->is_active ? '✅' : '⭕' }}
+                            <button wire:click="toggleActive({{ $product->id }})"
+                                    class="inline-flex {{ $product->is_active ? 'text-green-600 hover:text-green-700' : 'text-gray-300 hover:text-gray-400' }} transition"
+                                    title="{{ $product->is_active ? 'Active — click to deactivate' : 'Inactive — click to activate' }}">
+                                <x-admin.icon :name="$product->is_active ? 'check-circle' : 'x-circle'" class="w-5 h-5" />
                             </button>
                         </td>
                         <td class="px-6 py-4 text-center">
-                            {{ $product->is_featured ? '⭐' : '·' }}
+                            <x-admin.icon name="star" class="w-4 h-4 mx-auto {{ $product->is_featured ? 'text-amber-400 fill-current' : 'text-gray-200' }}" />
                         </td>
                         <td class="px-6 py-4 text-right">
                             <div class="flex gap-2 justify-end">
                                 <a href="{{ route('admin.products.edit', $product) }}"
-                                   class="px-3 py-1 text-xs rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 transition font-medium">
-                                    Edit
+                                   class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition font-medium">
+                                    <x-admin.icon name="edit" class="w-3.5 h-3.5" /> Edit
                                 </a>
                                 <button type="button"
                                         @click="deleteId = {{ $product->id }}"
-                                        class="px-3 py-1 text-xs rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition font-medium">
-                                    Delete
+                                        class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-lg bg-red-50 text-red-700 hover:bg-red-100 transition font-medium">
+                                    <x-admin.icon name="trash" class="w-3.5 h-3.5" /> Delete
                                 </button>
                             </div>
                         </td>

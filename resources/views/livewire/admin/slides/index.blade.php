@@ -3,8 +3,8 @@
         <h2 class="text-xl font-bold text-neutral-950">Hero Slides</h2>
         @if(!$showForm)
         <button wire:click="openCreate"
-                class="bg-brand text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-dark transition">
-            + New Slide
+                class="inline-flex items-center gap-1.5 bg-brand text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-dark transition">
+            <x-admin.icon name="plus" class="w-4 h-4" /> New Slide
         </button>
         @endif
     </div>
@@ -126,9 +126,13 @@
             {{-- Sort --}}
             <div class="flex flex-col gap-0.5">
                 <button wire:click="moveUp({{ $slide->id }})"
-                        class="text-gray-400 hover:text-gray-700 p-1 leading-none" title="Move up">▲</button>
+                        class="text-gray-400 hover:text-gray-700 p-0.5 leading-none" title="Move up">
+                    <x-admin.icon name="chevron-up" class="w-4 h-4" />
+                </button>
                 <button wire:click="moveDown({{ $slide->id }})"
-                        class="text-gray-400 hover:text-gray-700 p-1 leading-none" title="Move down">▼</button>
+                        class="text-gray-400 hover:text-gray-700 p-0.5 leading-none" title="Move down">
+                    <x-admin.icon name="chevron-down" class="w-4 h-4" />
+                </button>
             </div>
 
             {{-- Status --}}

@@ -12,9 +12,9 @@
                         <span class="text-gray-400 text-xs">· {{ $inquiry->created_at->diffForHumans() }}</span>
                     </div>
                     <div class="flex items-center gap-4 text-xs text-gray-500 mb-2">
-                        <span>📞 {{ $inquiry->phone }}</span>
-                        @if($inquiry->email)<span>✉️ {{ $inquiry->email }}</span>@endif
-                        @if($inquiry->product)<span>📦 {{ $inquiry->product->getTranslation('name',app()->getLocale()) }}</span>@endif
+                        <span class="inline-flex items-center gap-1"><x-admin.icon name="phone" class="w-3.5 h-3.5 text-gray-400" /> {{ $inquiry->phone }}</span>
+                        @if($inquiry->email)<span class="inline-flex items-center gap-1"><x-admin.icon name="envelope" class="w-3.5 h-3.5 text-gray-400" /> {{ $inquiry->email }}</span>@endif
+                        @if($inquiry->product)<span class="inline-flex items-center gap-1"><x-admin.icon name="box" class="w-3.5 h-3.5 text-gray-400" /> {{ $inquiry->product->getTranslation('name',app()->getLocale()) }}</span>@endif
                     </div>
                     @if($inquiry->message)<p class="text-sm text-gray-600">{{ $inquiry->message }}</p>@endif
                 </div>

@@ -1,9 +1,19 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Henex</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-gray-50 font-sans">
 
-@section('content')
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
+<div class="min-h-screen flex items-center justify-center px-4">
     <div class="w-full max-w-md bg-white rounded-lg shadow-sm p-8">
-        <h2 class="text-2xl font-bold text-center text-brand mb-8">Admin Login</h2>
+        <div class="text-center mb-8">
+            <span class="text-2xl font-extrabold text-brand tracking-tight">HENEX</span>
+            <h2 class="text-lg font-semibold text-gray-900 mt-2">Admin Login</h2>
+        </div>
 
         @if ($errors->any())
             <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -47,4 +57,6 @@
 
     </div>
 </div>
-@endsection
+
+</body>
+</html>

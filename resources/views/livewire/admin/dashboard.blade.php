@@ -5,6 +5,16 @@
     </div>
 
     {{-- Stats Grid --}}
+    @php
+        $statColors = [
+            'blue'   => 'bg-blue-50 text-blue-600',
+            'purple' => 'bg-purple-50 text-purple-600',
+            'red'    => 'bg-red-50 text-red-600',
+            'green'  => 'bg-green-50 text-green-600',
+            'yellow' => 'bg-amber-50 text-amber-600',
+            'gray'   => 'bg-gray-100 text-gray-600',
+        ];
+    @endphp
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         @foreach($stats as $stat)
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition">
@@ -13,7 +23,9 @@
                         <p class="text-gray-600 text-sm font-medium">{{ $stat['label'] }}</p>
                         <p class="text-3xl font-bold text-neutral-950 mt-1">{{ $stat['value'] }}</p>
                     </div>
-                    <div class="text-4xl">{{ $stat['icon'] }}</div>
+                    <div class="w-11 h-11 rounded-lg flex items-center justify-center shrink-0 {{ $statColors[$stat['color']] ?? $statColors['gray'] }}">
+                        <x-admin.icon :name="$stat['icon']" class="w-5 h-5" />
+                    </div>
                 </div>
                 <p class="text-xs text-gray-500">{{ $stat['change'] }}</p>
             </div>
