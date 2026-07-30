@@ -23,13 +23,9 @@ class ProductSeeder extends Seeder
 
     public function run(): void
     {
-        // henex.cn serves its TLS chain without the intermediate certificate, so strict
-        // peer verification fails locally even though the certificate itself is valid.
-        // Scoped to this one-time import of public product photos from the vendor's own site.
-        config(['media-library.media_downloader_ssl' => false]);
-
         $items = json_decode(file_get_contents(database_path('seeders/data/henex-products.json')), true);
         $categories = Category::all()->keyBy('slug');
+        $imageFiles = collect(glob(database_path('seeders/data/images/*.jpg')));
 
         foreach ($items as $index => $item) {
             $name = $item['name'];
@@ -84,16 +80,27 @@ class ProductSeeder extends Seeder
             }
 
             if ($product->getMedia('gallery')->isEmpty()) {
-                $images = array_values(array_unique(array_merge([$item['mainImg']], $item['galleryImgs'] ?? [])));
-                foreach ($images as $imgIndex => $url) {
+                // A plain "{$slug}-*.jpg" prefix match would also sweep up sibling variants
+                // that share this slug as a prefix (e.g. "hc-3206" matching "hc-3206-ccd-*.jpg"),
+                // so require the suffix after the slug to be purely numeric.
+                $pattern = '/^' . preg_quote($slug, '/') . '-\d+\.jpg$/';
+                $imagePaths = $imageFiles
+                    ->filter(fn ($path) => preg_match($pattern, basename($path)))
+                    ->sort(fn ($a, $b) => strnatcmp($a, $b))
+                    ->values()
+                    ->all();
+                foreach ($imagePaths as $path) {
                     try {
-                        $extension = pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION) ?: 'jpg';
-                        $product->addMediaFromUrl($url)
-                            ->usingFileName($slug . '-' . ($imgIndex + 1) . '.' . $extension)
+                        $product->addMedia($path)
+                            ->preservingOriginal()
+                            ->usingFileName(basename($path))
                             ->toMediaCollection('gallery');
                     } catch (\Throwable $e) {
                         $this->command?->warn("  Image failed for {$name}: {$e->getMessage()}");
                     }
+                }
+                if (empty($imagePaths)) {
+                    $this->command?->warn("  No local images found for {$name} ({$slug}-*.jpg)");
                 }
             }
 
