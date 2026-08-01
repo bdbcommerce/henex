@@ -125,5 +125,17 @@
             <path d="M19.5 4.5L10.5 13.5" />
             <path d="M18 13.5V19a1 1 0 0 1-1 1H5.5a1 1 0 0 1-1-1V7.5a1 1 0 0 1 1-1H11" />
             @break
+
+        @case('folder')
+            <path d="M3.5 7a1.5 1.5 0 0 1 1.5-1.5h4l2 2h8a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H5a1.5 1.5 0 0 1-1.5-1.5V7z" />
+            @break
+
+        @case('close')
+            <path d="M6 6l12 12M18 6L6 18" />
+            @break
+
+        @case('arrow-left')
+            <path d="M19 12H5M11 6l-6 6 6 6" />
+            @break
     @endswitch
 </svg>

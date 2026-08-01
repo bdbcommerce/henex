@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductForm extends Component
 {
@@ -30,6 +31,10 @@ class ProductForm extends Component
     public array $selectedCategories = [];
     public array $existingImages = [];
     public array $newImages = [];
+
+    public bool $showMediaBrowser = false;
+    public ?int $browsingProductId = null;
+    public array $pickedMedia = [];
 
     public function mount(?Product $product = null): void
     {
@@ -69,6 +74,47 @@ class ProductForm extends Component
         $this->product?->getMedia('gallery')->find($mediaId)?->delete();
         $this->loadExistingImages();
         $this->dispatch('toast', message: 'Image deleted.', type: 'success');
+    }
+
+    public function openMediaBrowser(): void
+    {
+        $this->browsingProductId = null;
+        $this->showMediaBrowser = true;
+    }
+
+    public function closeMediaBrowser(): void
+    {
+        $this->showMediaBrowser = false;
+        $this->browsingProductId = null;
+    }
+
+    public function browseFolder(?int $productId): void
+    {
+        $this->browsingProductId = $productId;
+    }
+
+    public function togglePick(int $mediaId): void
+    {
+        $media = Media::find($mediaId);
+        if (! $media) {
+            return;
+        }
+
+        if (isset($this->pickedMedia[$mediaId])) {
+            unset($this->pickedMedia[$mediaId]);
+            return;
+        }
+
+        $this->pickedMedia[$mediaId] = [
+            'id'   => $media->id,
+            'url'  => $media->getUrl('thumb') ?: $media->getUrl(),
+            'name' => $media->file_name,
+        ];
+    }
+
+    public function removePicked(int $mediaId): void
+    {
+        unset($this->pickedMedia[$mediaId]);
     }
 
     public function save(): void
@@ -115,6 +161,19 @@ class ProductForm extends Component
                 ->toMediaCollection('gallery');
         }
 
+        foreach ($this->pickedMedia as $mediaId => $meta) {
+            $source = Media::find($mediaId);
+            if (! $source) {
+                continue;
+            }
+            $this->product
+                ->addMedia($source->getPath())
+                ->preservingOriginal()
+                ->usingFileName(time() . '_' . $source->file_name)
+                ->toMediaCollection('gallery');
+        }
+        $this->pickedMedia = [];
+
         session()->flash('success', 'Product saved successfully.');
         $this->redirect(route('admin.products.index'), navigate: false);
     }
@@ -122,7 +181,39 @@ class ProductForm extends Component
     public function render()
     {
         $categories = Category::where('is_active', true)->whereNull('parent_id')->with('children')->get();
-        return view('livewire.admin.products.form', compact('categories'))->layout('layouts.admin');
+
+        $mediaFolders = [];
+        $folderMedia = [];
+
+        if ($this->showMediaBrowser) {
+            if ($this->browsingProductId) {
+                $folderProduct = Product::find($this->browsingProductId);
+                $folderMedia = $folderProduct
+                    ? $folderProduct->getMedia('gallery')->map(fn ($m) => [
+                        'id'   => $m->id,
+                        'url'  => $m->getUrl('thumb') ?: $m->getUrl(),
+                        'name' => $m->file_name,
+                    ])->toArray()
+                    : [];
+            } else {
+                $mediaFolders = Product::query()
+                    ->whereHas('media', fn ($q) => $q->where('collection_name', 'gallery'))
+                    ->when($this->product?->id, fn ($q, $id) => $q->where('id', '!=', $id))
+                    ->with(['media' => fn ($q) => $q->where('collection_name', 'gallery')->orderBy('order_column')->limit(1)])
+                    ->withCount(['media' => fn ($q) => $q->where('collection_name', 'gallery')])
+                    ->orderBy('sku')
+                    ->get()
+                    ->map(fn ($p) => [
+                        'id'    => $p->id,
+                        'name'  => $p->sku ?: $p->getTranslation('name', 'en'),
+                        'count' => $p->media_count,
+                        'cover' => $p->media->first()?->getUrl('thumb') ?: $p->media->first()?->getUrl(),
+                    ])->toArray();
+            }
+        }
+
+        return view('livewire.admin.products.form', compact('categories', 'mediaFolders', 'folderMedia'))
+            ->layout('layouts.admin');
     }
 
     private function loadExistingImages(): void
