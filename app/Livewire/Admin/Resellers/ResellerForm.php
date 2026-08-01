@@ -17,10 +17,29 @@ class ResellerForm extends Component
     }
     public function save(): void
     {
+        $this->validate([
+            'form.name'      => 'required|min:2',
+            'form.region_id' => 'required|exists:regions,id',
+            'form.type'      => 'required|in:reseller,service_center,both',
+            'form.email'     => 'nullable|email',
+            'form.website'   => 'nullable|url',
+            'form.latitude'  => 'nullable|numeric|between:-90,90',
+            'form.longitude' => 'nullable|numeric|between:-180,180',
+        ], [
+            'form.name.required'      => 'Reseller name is required.',
+            'form.region_id.required' => 'Please select a region.',
+        ]);
+
         $this->reseller ??= new Reseller;
-        $this->reseller->fill(array_diff_key($this->form, ['address'=>'']));
+        $attributes = array_diff_key($this->form, ['address' => '']);
+        // Empty strings are invalid for nullable decimal columns under MySQL strict mode — coerce to null.
+        $attributes['latitude'] = $attributes['latitude'] !== '' ? $attributes['latitude'] : null;
+        $attributes['longitude'] = $attributes['longitude'] !== '' ? $attributes['longitude'] : null;
+        $attributes['region_id'] = $attributes['region_id'] !== '' ? $attributes['region_id'] : null;
+        $this->reseller->fill($attributes);
         $this->reseller->setTranslations('address', $this->form['address']);
         $this->reseller->save();
+        session()->flash('success', 'Reseller saved successfully.');
         $this->redirect(route('admin.resellers.index'));
     }
     public function render()

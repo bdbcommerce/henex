@@ -12,14 +12,14 @@ class Article extends Model implements HasMedia
 {
     use HasTranslations, InteractsWithMedia;
 
-    protected $fillable = ['slug', 'author_id', 'type', 'is_published', 'published_at', 'cover_image', 'title', 'excerpt', 'content', 'meta_title', 'meta_description'];
+    protected $fillable = ['slug', 'user_id', 'type', 'is_published', 'published_at', 'cover_image', 'title', 'excerpt', 'content', 'meta_title', 'meta_description'];
     protected $casts = ['published_at' => 'datetime', 'is_published' => 'boolean'];
     public array $translatable = ['title', 'excerpt', 'content', 'meta_title', 'meta_description'];
 
-    // Relation — DB column is author_id per spec
+    // Relation — actual DB column is user_id (see 2026_06_25_133041_create_articles_table.php)
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /** @deprecated use author() */

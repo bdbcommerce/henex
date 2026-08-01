@@ -1,5 +1,13 @@
 <div>
     <h2 class="text-xl font-bold text-neutral-950 mb-6">Inquiries</h2>
+    <div class="flex flex-col sm:flex-row gap-3 mb-4">
+        <input wire:model.live.debounce.300ms="search" type="text" placeholder="Search by name, phone, email…" class="w-full sm:w-72 rounded-lg border-gray-300 text-sm shadow-sm">
+        <select wire:model.live="status" class="rounded-lg border-gray-300 text-sm shadow-sm">
+            <option value="">All</option>
+            <option value="unread">Unread</option>
+            <option value="read">Read</option>
+        </select>
+    </div>
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm divide-y divide-gray-100">
         @forelse($inquiries as $inquiry)
         <div class="px-5 py-4 {{ $inquiry->is_read ? '' : 'bg-brand/5' }}">
@@ -24,7 +32,13 @@
             </div>
         </div>
         @empty
-        <div class="px-5 py-10 text-center text-gray-400 text-sm">No inquiries yet.</div>
+        <div class="px-5 py-10 text-center text-gray-400 text-sm">
+            @if($search || $status)
+                No inquiries match your filters.
+            @else
+                No inquiries yet.
+            @endif
+        </div>
         @endforelse
     </div>
     <div class="mt-4">{{ $inquiries->links() }}</div>

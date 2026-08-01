@@ -91,6 +91,7 @@ class SlideIndex extends Component
         $slide = Slide::findOrFail($id);
         $slide->update(['is_active' => ! $slide->is_active]);
         cache()->forget('slides');
+        $this->dispatch('toast', message: $slide->is_active ? 'Slide shown on homepage.' : 'Slide hidden from homepage.', type: 'success');
     }
 
     public function moveUp(int $id): void

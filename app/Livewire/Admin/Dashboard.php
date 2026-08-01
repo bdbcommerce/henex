@@ -16,47 +16,52 @@ class Dashboard extends Component
 {
     public function render()
     {
+        $newProductsThisWeek = Product::where('created_at', '>=', now()->subDays(7))->count();
+        $newArticlesThisMonth = Article::where('created_at', '>=', now()->startOfMonth())->count();
+        $unreadInquiries = Inquiry::where('is_read', false)->count();
+        $regionsCovered = Reseller::where('is_active', true)->distinct('region_id')->count('region_id');
+
         $stats = [
             [
                 'label' => 'Products',
                 'value' => Product::count(),
                 'icon' => 'products',
-                'change' => '+3 this week',
+                'change' => $newProductsThisWeek > 0 ? "+{$newProductsThisWeek} this week" : 'No new products this week',
                 'color' => 'blue'
             ],
             [
                 'label' => 'Categories',
                 'value' => Category::count(),
                 'icon' => 'categories',
-                'change' => 'No change',
+                'change' => Category::where('is_active', true)->count() . ' active',
                 'color' => 'purple'
             ],
             [
                 'label' => 'New Inquiries',
-                'value' => Inquiry::where('is_read', false)->count(),
+                'value' => $unreadInquiries,
                 'icon' => 'inquiries',
-                'change' => 'Needs attention',
+                'change' => $unreadInquiries > 0 ? 'Needs attention' : 'All caught up',
                 'color' => 'red'
             ],
             [
                 'label' => 'Active Resellers',
                 'value' => Reseller::where('is_active', true)->count(),
                 'icon' => 'resellers',
-                'change' => 'Across 14 regions',
+                'change' => $regionsCovered > 0 ? "Across {$regionsCovered} region" . ($regionsCovered === 1 ? '' : 's') : 'No coverage yet',
                 'color' => 'green'
             ],
             [
                 'label' => 'Published Articles',
                 'value' => Article::where('is_published', true)->count(),
                 'icon' => 'articles',
-                'change' => '+2 this month',
+                'change' => $newArticlesThisMonth > 0 ? "+{$newArticlesThisMonth} this month" : 'No new articles this month',
                 'color' => 'yellow'
             ],
             [
                 'label' => 'Admin Users',
                 'value' => User::count(),
                 'icon' => 'users',
-                'change' => 'All active',
+                'change' => User::role('super_admin')->count() . ' super admin(s)',
                 'color' => 'gray'
             ],
         ];

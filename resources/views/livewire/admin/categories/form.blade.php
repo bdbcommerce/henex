@@ -5,12 +5,33 @@
     </div>
     <form wire:submit="save" class="space-y-6">
         <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div><label class="text-xs font-semibold text-gray-500 block mb-1">Slug</label><input type="text" wire:model="form.slug" class="w-full rounded-lg border-gray-300 text-sm"></div>
+            <div><label class="text-xs font-semibold text-gray-500 block mb-1">Slug <span class="text-red-400">*</span></label><input type="text" wire:model="form.slug" class="w-full rounded-lg border-gray-300 text-sm @error('form.slug') border-red-500 @enderror">@error('form.slug') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror</div>
             <div><label class="text-xs font-semibold text-gray-500 block mb-1">Sort Order</label><input type="number" wire:model="form.sort_order" class="w-full rounded-lg border-gray-300 text-sm"></div>
             <div><label class="text-xs font-semibold text-gray-500 block mb-1">Parent</label>
-                <select wire:model="form.parent_id" class="w-full rounded-lg border-gray-300 text-sm"><option value="">— None —</option>@foreach($parents as $p)<option value="{{ $p->id }}">{{ $p->getTranslation('name','en') }}</option>@endforeach</select>
+                <select wire:model="form.parent_id" class="w-full rounded-lg border-gray-300 text-sm"><option value="">— None —</option>@foreach($parents as $p)<option value="{{ $p->id }}">{{ $p->getTranslation('name', app()->getLocale()) }}</option>@endforeach</select>
             </div>
             <div><label class="flex items-center gap-2 text-sm"><input type="checkbox" wire:model="form.is_active"> Active</label></div>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+            <label class="text-xs font-semibold text-gray-500 block mb-2">Category Image</label>
+            <div class="flex items-center gap-4">
+                @if($image)
+                    <img src="{{ $image->temporaryUrl() }}" class="w-20 h-20 object-cover rounded-lg border border-gray-200">
+                @elseif($category?->exists && $category->hasMedia('image'))
+                    <img src="{{ $category->getFirstMediaUrl('image') }}" class="w-20 h-20 object-cover rounded-lg border border-gray-200">
+                @else
+                    <div class="w-20 h-20 rounded-lg bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-300 text-xs">No image</div>
+                @endif
+                <div class="flex-1">
+                    <input type="file" wire:model="image" accept="image/*"
+                           class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-brand/10 file:text-brand hover:file:bg-brand/20 transition">
+                    <div wire:loading wire:target="image" class="text-xs text-gray-400 mt-1">Uploading…</div>
+                    @error('image') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                    @if($category?->exists && $category->hasMedia('image'))
+                        <button type="button" wire:click="removeImage" wire:confirm="Remove this image?" class="text-xs text-red-500 hover:text-red-700 mt-1">Remove current image</button>
+                    @endif
+                </div>
+            </div>
         </div>
         <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
             <div class="flex gap-2 mb-5 border-b border-gray-200">
@@ -20,7 +41,7 @@
             </div>
             @foreach(['uz','ru','en'] as $code)
             <div x-show="locale==='{{ $code }}'">
-                <div class="mb-3"><label class="text-xs font-semibold text-gray-500 block mb-1">Name ({{ $code }})</label><input type="text" wire:model="form.name.{{ $code }}" class="w-full rounded-lg border-gray-300 text-sm"></div>
+                <div class="mb-3"><label class="text-xs font-semibold text-gray-500 block mb-1">Name ({{ $code }})@if($code === 'uz') <span class="text-red-400">*</span>@endif</label><input type="text" wire:model="form.name.{{ $code }}" class="w-full rounded-lg border-gray-300 text-sm">@error("form.name.{$code}") <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror</div>
                 <div><label class="text-xs font-semibold text-gray-500 block mb-1">Description ({{ $code }})</label><textarea wire:model="form.description.{{ $code }}" rows="3" class="w-full rounded-lg border-gray-300 text-sm"></textarea></div>
             </div>
             @endforeach

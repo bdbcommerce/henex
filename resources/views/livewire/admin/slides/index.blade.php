@@ -1,4 +1,4 @@
-<div x-data="{ locale: 'uz' }">
+<div x-data="{ locale: 'uz', deleteId: null }">
     <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-bold text-neutral-950">Hero Slides</h2>
         @if(!$showForm)
@@ -149,7 +149,7 @@
                     class="text-xs px-3 py-1.5 rounded-lg border border-gray-300 hover:bg-gray-50 transition">
                 Edit
             </button>
-            <button wire:click="delete({{ $slide->id }})" wire:confirm="Delete this slide?"
+            <button type="button" @click="deleteId = {{ $slide->id }}"
                     class="text-xs text-red-500 hover:text-red-700 px-2 transition">
                 Delete
             </button>
@@ -159,5 +159,27 @@
             No slides yet. Click <span class="font-semibold text-gray-600">"+ New Slide"</span> to add one.
         </div>
         @endforelse
+    </div>
+
+    {{-- Delete Confirmation Modal --}}
+    <div x-show="deleteId" x-transition class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" style="display: none">
+        <div class="bg-white rounded-xl shadow-lg max-w-sm w-full" @click.stop>
+            <div class="px-6 py-4 border-b border-gray-100">
+                <h3 class="text-lg font-bold text-neutral-950">Delete Slide?</h3>
+            </div>
+            <div class="px-6 py-4">
+                <p class="text-gray-600">This will permanently remove the slide from the homepage. This action cannot be undone.</p>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-100 flex gap-3 justify-end">
+                <button type="button" @click="deleteId = null"
+                        class="px-4 py-2 text-gray-600 rounded-lg hover:bg-gray-100 transition font-medium">
+                    Cancel
+                </button>
+                <button type="button" @click="wire.call('delete', deleteId); deleteId = null"
+                        class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium">
+                    Delete
+                </button>
+            </div>
+        </div>
     </div>
 </div>

@@ -9,10 +9,16 @@
 </head>
 <body class="bg-gray-50 font-sans">
 
-<div x-data="{ sidebarOpen: true }" class="flex h-screen overflow-hidden">
+<div x-data="{ sidebarOpen: window.innerWidth >= 768 }" class="flex h-screen overflow-hidden">
+
+    {{-- Mobile backdrop --}}
+    <div x-show="sidebarOpen" x-cloak @click="sidebarOpen = false"
+         x-transition.opacity
+         class="fixed inset-0 bg-black/50 z-30 md:hidden"></div>
 
     {{-- Sidebar --}}
-    <aside :class="sidebarOpen ? 'w-60' : 'w-0'" class="bg-neutral-950 text-white flex-shrink-0 overflow-hidden transition-all duration-300 flex flex-col">
+    <aside :class="sidebarOpen ? 'translate-x-0 w-60' : '-translate-x-full w-60 md:translate-x-0 md:w-0'"
+           class="fixed md:static inset-y-0 left-0 z-40 bg-neutral-950 text-white flex-shrink-0 overflow-hidden transition-all duration-300 flex flex-col">
         <div class="px-5 py-4 border-b border-white/10 flex items-baseline gap-1.5">
             <span class="text-brand font-bold text-lg tracking-tight">HENEX</span>
             <span class="text-gray-500 text-xs">Admin</span>

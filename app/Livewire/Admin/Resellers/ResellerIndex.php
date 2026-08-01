@@ -8,7 +8,11 @@ class ResellerIndex extends Component
     use WithPagination;
     public string $search = '';
     public function updatingSearch(): void { $this->resetPage(); }
-    public function delete(int $id): void { Reseller::findOrFail($id)->delete(); }
+    public function delete(int $id): void
+    {
+        Reseller::findOrFail($id)->delete();
+        $this->dispatch('toast', message: 'Reseller deleted successfully.', type: 'success');
+    }
     public function render()
     {
         $resellers = Reseller::when($this->search, fn($q) => $q->where('name','like',"%{$this->search}%"))

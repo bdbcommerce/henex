@@ -39,7 +39,7 @@ class ProductIndex extends Component
 
     public function render()
     {
-        $query = Product::query();
+        $query = Product::query()->with('categories');
 
         if ($this->search) {
             $query->where(function ($q) {
