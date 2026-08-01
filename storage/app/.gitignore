@@ -1,3 +1,7 @@
 *
 !private/git
 !.gitignore
+!public/
+!public/.gitignore
+!public/images
+!public/images/**
