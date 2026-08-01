@@ -150,8 +150,10 @@ class ProductForm extends Component
 
         $this->product->specifications()->delete();
         foreach ($this->specs as $i => $spec) {
-            $s = $this->product->specifications()->create(['sort_order' => $i]);
-            $s->setTranslations('key', $spec['key'])->setTranslations('value', $spec['value'])->save();
+            $s = $this->product->specifications()->make(['sort_order' => $i]);
+            $s->setTranslations('key', $spec['key']);
+            $s->setTranslations('value', $spec['value']);
+            $s->save();
         }
 
         foreach ($this->newImages as $file) {
