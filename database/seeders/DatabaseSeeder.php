@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
             RegionSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
+            AttributeSeeder::class,
+            IndustrySeeder::class,
+            KnowledgeBaseSeeder::class,
         ]);
     }
 }

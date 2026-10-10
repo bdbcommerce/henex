@@ -18,11 +18,14 @@
                         <span class="font-semibold text-sm">{{ $inquiry->name }}</span>
                         @if($inquiry->company)<span class="text-gray-400 text-xs">· {{ $inquiry->company }}</span>@endif
                         <span class="text-gray-400 text-xs">· {{ $inquiry->created_at->diffForHumans() }}</span>
+                        @if($inquiry->source === 'telegram')<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-sky-50 text-sky-700">{{ 'Telegram' . ($inquiry->telegramUser?->username ? ' · @' . $inquiry->telegramUser->username : '') }}</span>
+                        @endif
+                        @if($inquiry->industry)<span class="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-600">{{ $inquiry->industry->emoji }} {{ $inquiry->industry->getTranslation('name', 'en') }}</span>@endif
                     </div>
                     <div class="flex items-center gap-4 text-xs text-gray-500 mb-2">
                         <span class="inline-flex items-center gap-1"><x-admin.icon name="phone" class="w-3.5 h-3.5 text-gray-400" /> {{ $inquiry->phone }}</span>
                         @if($inquiry->email)<span class="inline-flex items-center gap-1"><x-admin.icon name="envelope" class="w-3.5 h-3.5 text-gray-400" /> {{ $inquiry->email }}</span>@endif
-                        @if($inquiry->product)<span class="inline-flex items-center gap-1"><x-admin.icon name="box" class="w-3.5 h-3.5 text-gray-400" /> {{ $inquiry->product->getTranslation('name',app()->getLocale()) }}</span>@endif
+                        @if($inquiry->product_id && $inquiry->product->exists)<span class="inline-flex items-center gap-1"><x-admin.icon name="box" class="w-3.5 h-3.5 text-gray-400" /> {{ $inquiry->product->getTranslation('name',app()->getLocale()) }}</span>@endif
                     </div>
                     @if($inquiry->message)<p class="text-sm text-gray-600">{{ $inquiry->message }}</p>@endif
                 </div>

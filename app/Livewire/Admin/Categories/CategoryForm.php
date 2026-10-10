@@ -26,17 +26,14 @@ class CategoryForm extends Component
 
         $this->validate([
             'form.name.uz' => 'required|min:2',
-            'form.slug'    => 'required|alpha_dash|unique:categories,slug' . ($categoryId ? ",{$categoryId}" : ''),
             'form.parent_id' => 'nullable|exists:categories,id',
             'image'        => 'nullable|image|max:4096',
         ], [
             'form.name.uz.required' => 'Category name (Uzbek) is required.',
-            'form.slug.required'    => 'Slug is required.',
-            'form.slug.unique'      => 'This slug is already taken.',
         ]);
 
         $this->category ??= new Category;
-        $this->category->fill(['slug'=>$this->form['slug'],'is_active'=>$this->form['is_active'],'sort_order'=>$this->form['sort_order'],'parent_id'=>$this->form['parent_id']?:null]);
+        $this->category->fill(['is_active'=>$this->form['is_active'],'sort_order'=>$this->form['sort_order'],'parent_id'=>$this->form['parent_id']?:null]);
         foreach (['name','description','meta_title','meta_description'] as $f) $this->category->setTranslations($f, $this->form[$f]);
         $this->category->save();
 

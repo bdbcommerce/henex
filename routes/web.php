@@ -2,6 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Shared-hosting fallback: when the public/storage symlink is missing, Apache passes
+// /storage/* requests to Laravel — serve the file straight from storage/app/public.
+Route::get('/storage/{path}', function (string $path) {
+    $root = realpath(storage_path('app/public'));
+    $file = realpath($root . DIRECTORY_SEPARATOR . $path);
+
+    abort_unless($file && str_starts_with($file, $root . DIRECTORY_SEPARATOR) && is_file($file), 404);
+
+    return response()->file($file, ['Cache-Control' => 'public, max-age=31536000, immutable']);
+})->where('path', '.*')->name('storage.fallback');
+
 // Public routes (cookie-based localization)
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

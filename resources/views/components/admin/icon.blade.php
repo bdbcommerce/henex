@@ -18,6 +18,25 @@
             <path d="M3.5 7a1.5 1.5 0 0 1 1.5-1.5h4l2 2h8a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H5a1.5 1.5 0 0 1-1.5-1.5V7z" />
             @break
 
+        @case('telegram')
+            <path d="M21 4.5L3 11.2l5.6 2.1L18 7l-7.2 7.4.1 5.1 3-3.4 4.2 3.1L21 4.5z" />
+            @break
+
+        @case('knowledge')
+            <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 1 4 17.5v-12zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 0 1.5-1.5v-12z" />
+            <path d="M7 8h2M7 11h2M15 8h2M15 11h2" />
+            @break
+
+        @case('industries')
+            <path d="M3 20V10l5 3V10l5 3V6l8 4v10H3z" />
+            <path d="M7 17h2M12 17h2M17 17h1" />
+            @break
+
+        @case('attributes')
+            <path d="M3.5 12.6V5a1.5 1.5 0 0 1 1.5-1.5h7.6a1.5 1.5 0 0 1 1.06.44l6.9 6.9a1.5 1.5 0 0 1 0 2.12l-7.6 7.6a1.5 1.5 0 0 1-2.12 0l-6.9-6.9a1.5 1.5 0 0 1-.44-1.06z" />
+            <circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none" />
+            @break
+
         @case('resellers')
             <path d="M4 9.5l1-5.5h14l1 5.5" />
             <path d="M4 9.5a2 2 0 1 0 4 0M8 9.5a2 2 0 1 0 4 0M12 9.5a2 2 0 1 0 4 0M16 9.5a2 2 0 1 0 4 0" />

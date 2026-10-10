@@ -12,11 +12,7 @@ class ContactController extends Controller
 {
     public function index(): View
     {
-        $products = cache()->remember('products_for_select', 600, fn () =>
-            Product::where('is_active', true)
-                ->orderBy('sort_order')
-                ->get(['id', 'name'])
-        );
+        $products = \App\Support\SiteData::productOptions();
 
         return view('pages.contact', compact('products'));
     }

@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Admin\Products;
 
+use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -27,14 +29,21 @@ class ProductForm extends Component
         'meta_description'  => ['uz' => '', 'ru' => '', 'en' => ''],
     ];
 
-    public array $specs = [];
     public array $selectedCategories = [];
+    /** Only the attributes added to this product: [attribute_id => [attribute_value_id, ...]] */
+    public array $selectedAttributes = [];
     public array $existingImages = [];
     public array $newImages = [];
 
     public bool $showMediaBrowser = false;
     public ?int $browsingProductId = null;
+    public bool $browsingUnused = false;
     public array $pickedMedia = [];
+    /** Unused server files picked for re-attaching: [md5(path) => ['path', 'url', 'name']] */
+    public array $pickedFiles = [];
+
+    /** Disk folder every media file lives in (see App\Support\MediaLibrary\FlatPathGenerator). */
+    private const MEDIA_DIR = 'images';
 
     public function mount(?Product $product = null): void
     {
@@ -45,40 +54,69 @@ class ProductForm extends Component
                 $this->form[$field] = $product->getTranslations($field);
             }
             $this->selectedCategories = $product->categories->pluck('id')->toArray();
-            $this->specs = $product->specifications
-                ->map(fn($s) => [
-                    'key'        => $s->getTranslations('key'),
-                    'value'      => $s->getTranslations('value'),
-                    'sort_order' => $s->sort_order,
-                ])->toArray();
+            foreach ($product->attributeValues as $value) {
+                $this->selectedAttributes[$value->attribute_id][] = $value->id;
+            }
             $this->loadExistingImages();
         }
     }
 
-    public function addSpec(): void
+    // ── Attributes ──────────────────────────────────────────────────────────
+
+    public function addAttribute(int $id): void
     {
-        $this->specs[] = [
-            'key'        => ['uz' => '', 'ru' => '', 'en' => ''],
-            'value'      => ['uz' => '', 'ru' => '', 'en' => ''],
-            'sort_order' => count($this->specs),
-        ];
+        if (! Attribute::active()->whereKey($id)->exists()) {
+            return;
+        }
+        $this->selectedAttributes[$id] ??= [];
+        $this->dispatch('attribute-added', id: $id);
     }
 
-    public function removeSpec(int $i): void
+    public function addAllAttributes(): void
     {
-        array_splice($this->specs, $i, 1);
+        foreach (Attribute::active()->pluck('id') as $id) {
+            $this->selectedAttributes[$id] ??= [];
+        }
     }
 
-    public function deleteImage(int $mediaId): void
+    public function removeAttribute(int $attributeId): void
     {
-        $this->product?->getMedia('gallery')->find($mediaId)?->delete();
+        unset($this->selectedAttributes[$attributeId]);
+    }
+
+    // ── Images ──────────────────────────────────────────────────────────────
+
+    /**
+     * Remove an image from this product. With $deleteFile the file (and its thumb/medium
+     * versions) is deleted from the server; otherwise it stays and appears under
+     * "Unused files on server" in the media library for re-use.
+     */
+    public function deleteImage(int $mediaId, bool $deleteFile = true): void
+    {
+        $media = $this->product?->media()->where('collection_name', 'gallery')->whereKey($mediaId)->first();
+        if (! $media) {
+            return;
+        }
+
+        // Never delete a file another media record still points to.
+        $shared = Media::where('id', '!=', $media->id)->where('disk', $media->disk)->where('file_name', $media->file_name)->exists();
+
+        if ($deleteFile && ! $shared) {
+            $media->delete();                // MediaLibrary removes the file + conversions
+            $message = 'Image deleted from the product and the server.';
+        } else {
+            $media->deleteQuietly();         // record only — files stay on disk
+            $message = $shared ? 'Image removed. The file is used by another product, so it was kept.' : 'Image removed from the product. The file was kept on the server.';
+        }
+
         $this->loadExistingImages();
-        $this->dispatch('toast', message: 'Image deleted.', type: 'success');
+        $this->dispatch('toast', message: $message, type: 'success');
     }
 
     public function openMediaBrowser(): void
     {
         $this->browsingProductId = null;
+        $this->browsingUnused = false;
         $this->showMediaBrowser = true;
     }
 
@@ -86,11 +124,75 @@ class ProductForm extends Component
     {
         $this->showMediaBrowser = false;
         $this->browsingProductId = null;
+        $this->browsingUnused = false;
     }
 
     public function browseFolder(?int $productId): void
     {
         $this->browsingProductId = $productId;
+        $this->browsingUnused = false;
+    }
+
+    public function browseUnused(): void
+    {
+        $this->browsingProductId = null;
+        $this->browsingUnused = true;
+    }
+
+    public function togglePickFile(string $path): void
+    {
+        $key = md5($path);
+        if (isset($this->pickedFiles[$key])) {
+            unset($this->pickedFiles[$key]);
+            return;
+        }
+        if (! in_array($path, $this->unusedFiles(), true)) {
+            return;
+        }
+        $this->pickedFiles[$key] = ['path' => $path, 'url' => Storage::disk('public')->url($path), 'name' => basename($path)];
+    }
+
+    public function removePickedFile(string $key): void
+    {
+        unset($this->pickedFiles[$key]);
+    }
+
+    /** Permanently delete an unused file (and its leftover thumb/medium versions) from the server. */
+    public function deleteUnusedFile(string $path): void
+    {
+        if (! in_array($path, $this->unusedFiles(), true)) {
+            return; // only files no media record uses
+        }
+        Storage::disk('public')->delete([$path, ...$this->conversionPaths($path)]);
+        unset($this->pickedFiles[md5($path)]);
+        $this->dispatch('toast', message: 'File deleted from the server.', type: 'success');
+    }
+
+    /**
+     * Original image files in the media folder that no media record references
+     * (conversion files like "x-thumb.webp" are skipped).
+     *
+     * @return string[] disk-relative paths
+     */
+    private function unusedFiles(): array
+    {
+        $used = Media::where('disk', 'public')->pluck('file_name')
+            ->flatMap(fn ($name) => [$name, ...array_map('basename', $this->conversionPaths(self::MEDIA_DIR . '/' . $name))])
+            ->flip();
+
+        return collect(Storage::disk('public')->files(self::MEDIA_DIR))
+            ->filter(fn ($path) => preg_match('/\.(jpe?g|png|webp|gif)$/i', $path))
+            ->reject(fn ($path) => preg_match('/-(thumb|medium)\.webp$/i', $path))
+            ->reject(fn ($path) => isset($used[basename($path)]))
+            ->values()->all();
+    }
+
+    /** Paths of the generated thumb/medium versions that belong to an original file. */
+    private function conversionPaths(string $path): array
+    {
+        $base = self::MEDIA_DIR . '/' . pathinfo($path, PATHINFO_FILENAME);
+
+        return ["{$base}-thumb.webp", "{$base}-medium.webp"];
     }
 
     public function togglePick(int $mediaId): void
@@ -123,20 +225,16 @@ class ProductForm extends Component
 
         $this->validate([
             'form.name.uz' => 'required|min:2',
-            'form.slug'    => 'required|alpha_dash|unique:products,slug' . ($productId ? ",{$productId}" : ''),
             'form.sku'     => 'nullable|unique:products,sku' . ($productId ? ",{$productId}" : ''),
             'newImages.*'  => 'nullable|image|max:4096',
         ], [
             'form.name.uz.required' => 'Product name (Uzbek) is required.',
-            'form.slug.required'    => 'Slug is required.',
-            'form.slug.unique'      => 'This slug is already taken.',
             'form.sku.unique'       => 'This SKU is already in use.',
         ]);
 
         $this->product ??= new Product();
         $this->product->fill([
             'sku'         => $this->form['sku'] ?: null,
-            'slug'        => $this->form['slug'],
             'is_active'   => $this->form['is_active'],
             'is_featured' => $this->form['is_featured'],
             'sort_order'  => $this->form['sort_order'],
@@ -148,13 +246,18 @@ class ProductForm extends Component
 
         $this->product->categories()->sync($this->selectedCategories);
 
-        $this->product->specifications()->delete();
-        foreach ($this->specs as $i => $spec) {
-            $s = $this->product->specifications()->make(['sort_order' => $i]);
-            $s->setTranslations('key', $spec['key']);
-            $s->setTranslations('value', $spec['value']);
-            $s->save();
-        }
+        // Keep only value ids that really belong to the attribute they were picked under.
+        $valueIds = Attribute::with('values:id,attribute_id')->get()
+            ->flatMap(function ($attr) {
+                $ids = array_values(array_intersect(
+                    array_map('intval', $this->selectedAttributes[$attr->id] ?? []),
+                    $attr->values->pluck('id')->all(),
+                ));
+
+                return $attr->is_multiple ? $ids : array_slice($ids, 0, 1);
+            })->all();
+        $this->product->attributeValues()->sync($valueIds);
+        cache()->forget('bot_catalog_context');
 
         foreach ($this->newImages as $file) {
             $this->product
@@ -176,6 +279,21 @@ class ProductForm extends Component
         }
         $this->pickedMedia = [];
 
+        // Re-attach kept server files: the file is moved into the media record under a new
+        // (unique) name — never onto its own path — and its stale thumb/medium files are removed.
+        $unused = $this->unusedFiles();
+        foreach ($this->pickedFiles as $file) {
+            if (! in_array($file['path'], $unused, true)) {
+                continue;
+            }
+            $this->product
+                ->addMedia(Storage::disk('public')->path($file['path']))
+                ->usingFileName(time() . '_' . preg_replace('/^\d{9,}_/', '', basename($file['path'])))
+                ->toMediaCollection('gallery');
+            Storage::disk('public')->delete($this->conversionPaths($file['path']));
+        }
+        $this->pickedFiles = [];
+
         session()->flash('success', 'Product saved successfully.');
         $this->redirect(route('admin.products.index'), navigate: false);
     }
@@ -183,6 +301,7 @@ class ProductForm extends Component
     public function render()
     {
         $categories = Category::where('is_active', true)->whereNull('parent_id')->with('children')->get();
+        $productAttributes = Attribute::active()->ordered()->with('values')->get();
 
         $mediaFolders = [];
         $folderMedia = [];
@@ -214,7 +333,16 @@ class ProductForm extends Component
             }
         }
 
-        return view('livewire.admin.products.form', compact('categories', 'mediaFolders', 'folderMedia'))
+        $unusedFiles = $this->showMediaBrowser
+            ? collect($this->unusedFiles())->map(fn ($path) => [
+                'path' => $path,
+                'key'  => md5($path),
+                'url'  => Storage::disk('public')->url($path),
+                'name' => basename($path),
+            ])->all()
+            : [];
+
+        return view('livewire.admin.products.form', compact('categories', 'productAttributes', 'mediaFolders', 'folderMedia', 'unusedFiles'))
             ->layout('layouts.admin');
     }
 

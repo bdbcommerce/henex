@@ -46,10 +46,7 @@ class ProductCatalog extends Component
 
         $products = $query->paginate(12);
 
-        $categories = cache()->remember('nav_categories', 600, fn () =>
-            Category::where('is_active', true)->whereNull('parent_id')
-                ->with('children')->orderBy('sort_order')->get()
-        );
+        $categories = \App\Support\SiteData::categories();
 
         return view('livewire.frontend.product-catalog', compact('products', 'categories'));
     }

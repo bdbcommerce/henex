@@ -5,7 +5,7 @@
     </div>
     <form wire:submit="save" class="space-y-6">
         <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div><label class="text-xs font-semibold text-gray-500 block mb-1">Slug <span class="text-red-400">*</span></label><input type="text" wire:model="form.slug" class="w-full rounded-lg border-gray-300 text-sm @error('form.slug') border-red-500 @enderror">@error('form.slug') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror</div>
+            <x-admin.slug-display :slug="$category?->exists ? $category->slug : null" :url="$category?->exists && route('products.category', $category->slug) ? route('products.category', $category->slug) : null" source="English name" :follows="true" />
             <div><label class="text-xs font-semibold text-gray-500 block mb-1">Sort Order</label><input type="number" wire:model="form.sort_order" class="w-full rounded-lg border-gray-300 text-sm"></div>
             <div><label class="text-xs font-semibold text-gray-500 block mb-1">Parent</label>
                 <select wire:model="form.parent_id" class="w-full rounded-lg border-gray-300 text-sm"><option value="">— None —</option>@foreach($parents as $p)<option value="{{ $p->id }}">{{ $p->getTranslation('name', app()->getLocale()) }}</option>@endforeach</select>

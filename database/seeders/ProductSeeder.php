@@ -70,15 +70,6 @@ class ProductSeeder extends Seeder
                 ->values();
             $product->categories()->sync($categoryIds);
 
-            $product->specifications()->delete();
-            foreach ($features as $specIndex => $feature) {
-                $product->specifications()->create([
-                    'sort_order' => $specIndex,
-                    'key' => ['uz' => 'Xususiyat', 'ru' => 'Особенность', 'en' => 'Feature'],
-                    'value' => ['uz' => $feature, 'ru' => $feature, 'en' => $feature],
-                ]);
-            }
-
             if ($product->getMedia('gallery')->isEmpty()) {
                 // A plain "{$slug}-*.jpg" prefix match would also sweep up sibling variants
                 // that share this slug as a prefix (e.g. "hc-3206" matching "hc-3206-ccd-*.jpg"),

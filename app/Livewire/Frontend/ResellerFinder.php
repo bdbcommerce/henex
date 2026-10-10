@@ -19,9 +19,7 @@ class ResellerFinder extends Component
 
     public function render()
     {
-        $regions = cache()->remember('all_regions', 3600, fn () =>
-            Region::orderBy('sort_order')->get()
-        );
+        $regions = \App\Support\SiteData::regions();
 
         $query = Reseller::where('is_active', true)->with('region')->orderBy('sort_order');
 

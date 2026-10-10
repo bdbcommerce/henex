@@ -7,17 +7,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
+        "artesaos/seotools": "^1.4",
+        "intervention/image-laravel": "^4.0",
         "laravel/framework": "^13.0",
+        "laravel/mcp": "^1.0",
         "laravel/tinker": "^3.0",
         "livewire/livewire": "^4.3",
+        "mcamara/laravel-localization": "^2.4",
         "spatie/laravel-medialibrary": "^11.23",
         "spatie/laravel-permission": "^8.0",
-        "spatie/laravel-translatable": "^6.14",
-        "spatie/laravel-sluggable": "^4.0",
         "spatie/laravel-sitemap": "^8.0",
-        "intervention/image-laravel": "^4.0",
-        "mcamara/laravel-localization": "^2.4",
-        "artesaos/seotools": "^1.4"
+        "spatie/laravel-sluggable": "^4.0",
+        "spatie/laravel-translatable": "^6.14"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

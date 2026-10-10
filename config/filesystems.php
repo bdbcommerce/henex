@@ -33,7 +33,7 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
-            'serve' => true,
+            'serve' => false, // frees /storage/* for the public-file fallback in routes/web.php
             'throw' => false,
             'report' => false,
         ],

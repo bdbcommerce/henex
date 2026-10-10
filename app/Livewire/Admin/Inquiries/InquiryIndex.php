@@ -7,8 +7,8 @@ class InquiryIndex extends Component
 {
     use WithPagination;
 
-    public string $search = '';
-    public string $status = '';
+    #[Url] public string $search = '';
+    #[Url] public string $status = '';
 
     public function updatingSearch(): void { $this->resetPage(); }
     public function updatingStatus(): void { $this->resetPage(); }
@@ -30,7 +30,7 @@ class InquiryIndex extends Component
             }))
             ->when($this->status === 'unread', fn ($q) => $q->where('is_read', false))
             ->when($this->status === 'read', fn ($q) => $q->where('is_read', true))
-            ->with('product')
+            ->with(['product', 'industry', 'telegramUser'])
             ->latest()
             ->paginate(25);
 

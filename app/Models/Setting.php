@@ -12,4 +12,11 @@ class Setting extends Model
     public $timestamps = false;
 
     protected $fillable = ['key', 'value'];
+
+    protected static function booted(): void
+    {
+        $flush = fn () => cache()->forget(\App\Support\SiteData::SETTINGS_KEY);
+        static::saved($flush);
+        static::deleted($flush);
+    }
 }

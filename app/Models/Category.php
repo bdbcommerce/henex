@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasAutoSlug;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,7 +14,16 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Category extends Model implements HasMedia
 {
-    use HasTranslations, InteractsWithMedia;
+    use HasTranslations, InteractsWithMedia, HasAutoSlug;
+
+    // Auto slug (public URL: slug follows the source, old slugs 301-redirect)
+    protected array $slugSourceFields = ['name'];
+    protected bool $slugFollowsSource = true;
+
+    protected function slugSource(): string
+    {
+        return $this->firstTranslation('name');
+    }
 
     protected $fillable = ['slug', 'parent_id', 'image', 'sort_order', 'is_active', 'name', 'description', 'meta_title', 'meta_description'];
     public array $translatable = ['name', 'description', 'meta_title', 'meta_description'];

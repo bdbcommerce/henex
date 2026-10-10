@@ -101,4 +101,31 @@
         </div>
 
     </form>
+
+    {{-- Performance --}}
+    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+                <h3 class="text-sm font-semibold text-gray-700">Performance</h3>
+                <p class="text-xs text-gray-500">Red rows slow the site down. .env values are changed in the hosting file manager; then press “Rebuild caches”.</p>
+            </div>
+            <button type="button" wire:click="rebuildCaches" wire:loading.attr="disabled"
+                    class="shrink-0 px-4 py-2 rounded-lg text-sm font-semibold bg-neutral-900 text-white hover:bg-neutral-700 transition disabled:opacity-60">
+                <span wire:loading.remove wire:target="rebuildCaches">Rebuild caches</span>
+                <span wire:loading wire:target="rebuildCaches">Rebuilding…</span>
+            </button>
+        </div>
+        <table class="w-full text-sm">
+            <thead class="text-xs text-gray-400 uppercase"><tr><th class="text-left py-1">Setting</th><th class="text-left py-1">Now</th><th class="text-left py-1">Recommended</th></tr></thead>
+            <tbody class="divide-y divide-gray-100">
+                @foreach($checks as [$name, $now, $recommended, $ok])
+                <tr>
+                    <td class="py-1.5 font-mono text-xs">{{ $name }}</td>
+                    <td class="py-1.5 font-mono text-xs {{ $ok ? 'text-green-700' : 'text-red-600 font-semibold' }}">{{ $ok ? '✔' : '✘' }} {{ $now }}</td>
+                    <td class="py-1.5 font-mono text-xs text-gray-500">{{ $recommended }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>

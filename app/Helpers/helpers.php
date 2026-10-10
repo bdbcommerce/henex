@@ -1,16 +1,16 @@
 <?php
 
-use App\Models\Setting;
+use App\Support\SiteData;
 
 if (! function_exists('settings')) {
     /**
-     * Get a setting value from the database (with 1-hour cache).
+     * Get a setting value. All settings are loaded with one cached query per request
+     * (see App\Support\SiteData::settings); empty values fall back to $default.
      */
     function settings(string $key, mixed $default = null): mixed
     {
-        return cache()->remember("setting_{$key}", 3600, function () use ($key, $default) {
-            $value = Setting::find($key)?->value;
-            return $value !== null ? $value : $default;
-        });
+        $value = SiteData::settings()[$key] ?? null;
+
+        return $value !== null && $value !== '' ? $value : $default;
     }
 }

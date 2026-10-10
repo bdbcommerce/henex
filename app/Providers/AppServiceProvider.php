@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
-use App\Models\Region;
+use App\Support\SiteData;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -18,16 +17,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Share root categories + regions with every public view
+        // Loaded once per request (SiteData) and never overriding data a controller already passed.
         View::composer(['pages.*', 'livewire.frontend.*', 'layouts.app'], function ($view) {
-            $view->with('categories',
-                Category::where('is_active', true)
-                    ->whereNull('parent_id')
-                    ->orderBy('sort_order')
-                    ->get()
-            );
-            $view->with('regions',
-                Region::orderBy('sort_order')->get()
-            );
+            if (! $view->offsetExists('categories')) {
+                $view->with('categories', SiteData::categories());
+            }
+            if (! $view->offsetExists('regions')) {
+                $view->with('regions', SiteData::regions());
+            }
         });
     }
 }

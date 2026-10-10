@@ -5,7 +5,7 @@
     </div>
     <form wire:submit="save" class="space-y-6">
         <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div><label class="text-xs font-semibold text-gray-500 block mb-1">Slug <span class="text-red-400">*</span></label><input type="text" wire:model="form.slug" class="w-full rounded-lg border-gray-300 text-sm @error('form.slug') border-red-500 @enderror">@error('form.slug') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror</div>
+            <x-admin.slug-display :slug="$article?->exists ? $article->slug : null" :url="$article?->exists && route('news.show', $article->slug) ? route('news.show', $article->slug) : null" source="title" :follows="true" />
             <div><label class="text-xs font-semibold text-gray-500 block mb-1">Type</label><select wire:model="form.type" class="w-full rounded-lg border-gray-300 text-sm"><option value="news">News</option><option value="blog">Blog</option><option value="guide">Guide</option></select></div>
             <div><label class="text-xs font-semibold text-gray-500 block mb-1">Published At</label><input type="datetime-local" wire:model="form.published_at" class="w-full rounded-lg border-gray-300 text-sm"></div>
             <div><label class="flex items-center gap-2 text-sm"><input type="checkbox" wire:model="form.is_published"> Published</label></div>

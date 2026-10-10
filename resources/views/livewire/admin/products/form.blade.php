@@ -14,11 +14,7 @@
                     <input type="text" wire:model="form.sku" class="w-full rounded-lg border-gray-300 text-sm focus:border-brand focus:ring-brand">
                     @error('form.sku') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-500 mb-1">Slug <span class="text-red-400">*</span></label>
-                    <input type="text" wire:model="form.slug" class="w-full rounded-lg border-gray-300 text-sm focus:border-brand focus:ring-brand">
-                    @error('form.slug') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                </div>
+                <x-admin.slug-display :slug="$product?->exists ? $product->slug : null" :url="$product?->exists && route('products.show', $product->slug) ? route('products.show', $product->slug) : null" source="SKU" :follows="true" />
                 <div>
                     <label class="block text-xs font-semibold text-gray-500 mb-1">Sort Order</label>
                     <input type="number" wire:model="form.sort_order" class="w-full rounded-lg border-gray-300 text-sm focus:border-brand focus:ring-brand">
@@ -86,26 +82,131 @@
         {{-- Categories --}}
         <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
             <h3 class="text-sm font-semibold text-gray-700 mb-3">Categories</h3>
-            <div class="flex flex-wrap gap-x-6 gap-y-3">
-                @foreach($categories as $cat)
-                <label class="flex items-center gap-2 text-sm cursor-pointer">
-                    <input type="checkbox" wire:model="selectedCategories" value="{{ $cat->id }}"
-                           class="rounded border-gray-300 text-brand focus:ring-brand">
-                    <span>{{ $cat->getTranslation('name', 'en') }}</span>
-                </label>
-                @foreach($cat->children as $child)
-                <label class="flex items-center gap-2 text-sm cursor-pointer ml-4 text-gray-500">
-                    <input type="checkbox" wire:model="selectedCategories" value="{{ $child->id }}"
-                           class="rounded border-gray-300 text-brand focus:ring-brand">
-                    <span>↳ {{ $child->getTranslation('name', 'en') }}</span>
-                </label>
-                @endforeach
-                @endforeach
+            @php
+                $categoryOptions = $categories->flatMap(fn ($cat) => collect([
+                    ['id' => $cat->id, 'name' => $cat->getTranslation('name', 'en'), 'child' => false],
+                ])->concat($cat->children->map(fn ($child) => [
+                    'id' => $child->id, 'name' => $child->getTranslation('name', 'en'), 'child' => true,
+                ])))->values();
+            @endphp
+            <x-admin.multi-select :options="$categoryOptions" model="selectedCategories" placeholder="Select categories…" />
+            @error('selectedCategories') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+        </div>
+
+        {{-- Attributes --}}
+        @php
+            $attrLabel = fn ($a) => $a->getTranslation('name', 'en') ?: $a->getTranslation('name', 'uz');
+            $valueLabel = fn ($v) => $v->getTranslation('value', 'en') ?: $v->getTranslation('value', 'uz');
+            $added = $productAttributes->filter(fn ($a) => array_key_exists($a->id, $selectedAttributes));
+            $available = $productAttributes->reject(fn ($a) => array_key_exists($a->id, $selectedAttributes));
+        @endphp
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm">
+            <div class="flex items-start justify-between gap-4 px-6 pt-5 pb-4 border-b border-gray-100">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-800 flex items-center gap-2">
+                        Attributes
+                        @if($added->isNotEmpty())<span class="px-1.5 py-0.5 rounded-md bg-gray-100 text-gray-600 text-[11px] font-semibold">{{ $added->count() }}</span>@endif
+                    </h3>
+                    <p class="text-xs text-gray-500 mt-0.5">Shown as the spec table on the product page and used by catalog filters and the Telegram advisor.</p>
+                </div>
+                <a href="{{ route('admin.attributes.index') }}" target="_blank" class="shrink-0 text-xs text-gray-500 hover:text-brand">Manage attributes ↗</a>
             </div>
+
+            @if($productAttributes->isEmpty())
+                <div class="px-6 py-8 text-center">
+                    <p class="text-sm text-gray-500">No attributes exist yet.</p>
+                    <a href="{{ route('admin.attributes.create') }}" target="_blank" class="inline-block mt-2 text-sm font-semibold text-brand hover:underline">Create the first attribute ↗</a>
+                </div>
+            @else
+                {{-- Assigned attributes --}}
+                @if($added->isNotEmpty())
+                <ul class="divide-y divide-gray-100">
+                    @foreach($added as $attr)
+                    <li wire:key="attr-row-{{ $attr->id }}"
+                        x-data="{ flash: false, get empty() { return ! (($wire.selectedAttributes ?? {})[{{ $attr->id }}] ?? []).length } }"
+                        @attribute-added.window="if ($event.detail.id === {{ $attr->id }}) { $nextTick(() => $el.scrollIntoView({ behavior: 'smooth', block: 'center' })); flash = true; setTimeout(() => flash = false, 1800) }"
+                        :class="flash ? 'bg-brand/5' : ''"
+                        class="group grid grid-cols-1 md:grid-cols-[180px_1fr_auto] gap-x-4 gap-y-2 px-6 py-4 transition-colors duration-700">
+                        <div class="pt-1">
+                            <div class="text-sm font-medium text-gray-800">{{ $attrLabel($attr) }}</div>
+                            <div class="text-[11px] text-gray-400">{{ $attr->is_multiple ? 'Select one or more' : 'Select one' }}</div>
+                        </div>
+                        <div>
+                            @if($attr->values->count() <= 12)
+                                <x-admin.value-pills
+                                    :options="$attr->values->map(fn ($v) => ['id' => $v->id, 'name' => $valueLabel($v)])"
+                                    :model="'selectedAttributes.' . $attr->id"
+                                    :multiple="$attr->is_multiple"
+                                    :label="$attrLabel($attr)" />
+                            @else
+                                <x-admin.multi-select
+                                    :options="$attr->values->map(fn ($v) => ['id' => $v->id, 'name' => $valueLabel($v)])"
+                                    :model="'selectedAttributes.' . $attr->id"
+                                    :multiple="$attr->is_multiple"
+                                    placeholder="Search and select…" />
+                            @endif
+                            <p x-show="empty" style="display:none" class="mt-1.5 text-[11px] text-amber-600">No value selected — this attribute will not be saved.</p>
+                        </div>
+                        <button type="button" wire:click="removeAttribute({{ $attr->id }})"
+                                title="Remove {{ $attrLabel($attr) }} from this product" aria-label="Remove {{ $attrLabel($attr) }}"
+                                class="justify-self-end self-start p-1.5 rounded-lg text-gray-300 hover:text-red-600 hover:bg-red-50 md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 transition">
+                            <x-admin.icon name="close" class="w-4 h-4" />
+                        </button>
+                    </li>
+                    @endforeach
+                </ul>
+                @else
+                <div class="px-6 py-6 text-center">
+                    <p class="text-sm text-gray-500">This product has no attributes yet.</p>
+                    <p class="text-xs text-gray-400 mt-0.5">Add the ones that describe it, e.g. scan engine, connectivity, form factor.</p>
+                </div>
+                @endif
+
+                {{-- Add attribute: searchable popover --}}
+                @if($available->isNotEmpty())
+                <div class="px-6 py-4 border-t border-gray-100 flex items-center gap-3"
+                     x-data="{
+                        open: false, q: '',
+                        items: @js($available->map(fn ($a) => ['id' => $a->id, 'name' => $attrLabel($a), 'count' => $a->values->count(), 'multiple' => $a->is_multiple])->values()),
+                        get list() { const q = this.q.toLowerCase(); return q ? this.items.filter(i => i.name.toLowerCase().includes(q)) : this.items },
+                        pick(id) { this.open = false; this.q = ''; $wire.addAttribute(id) },
+                     }"
+                     @keydown.escape="open = false">
+                    <div class="relative" @click.outside="open = false">
+                        <button type="button" @click="open = !open; $nextTick(() => open && $refs.q.focus())" :aria-expanded="open.toString()"
+                                class="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-brand/60 px-3 py-2 text-sm font-semibold text-brand-dark hover:bg-brand/5 hover:border-brand transition">
+                            <x-admin.icon name="plus" class="w-4 h-4" /> Add attribute
+                        </button>
+                        <div x-show="open" x-transition.origin.top.left style="display:none"
+                             class="absolute left-0 z-30 mt-2 w-72 rounded-xl border border-gray-200 bg-white shadow-xl">
+                            <div class="p-2 border-b border-gray-100">
+                                <input x-ref="q" x-model="q" type="text" placeholder="Search attributes…"
+                                       @keydown.enter.prevent="list.length && pick(list[0].id)"
+                                       class="w-full rounded-lg border-gray-300 text-sm focus:border-brand focus:ring-brand">
+                            </div>
+                            <ul class="max-h-64 overflow-y-auto py-1">
+                                <template x-for="item in list" :key="item.id">
+                                    <li>
+                                        <button type="button" @click="pick(item.id)" class="w-full flex items-center justify-between gap-3 px-3 py-2 text-left text-sm hover:bg-gray-50">
+                                            <span class="font-medium text-gray-800" x-text="item.name"></span>
+                                            <span class="text-[11px] text-gray-400 whitespace-nowrap" x-text="item.count + ' values · ' + (item.multiple ? 'multi' : 'single')"></span>
+                                        </button>
+                                    </li>
+                                </template>
+                                <li x-show="!list.length" class="px-3 py-3 text-sm text-gray-400">No match.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    @if($available->count() > 1)
+                        <button type="button" wire:click="addAllAttributes" class="text-xs text-gray-500 hover:text-brand">Add all {{ $available->count() }}</button>
+                    @endif
+                </div>
+                @endif
+            @endif
         </div>
 
         {{-- Images --}}
-        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6" x-data="{ imgDel: null }">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-sm font-semibold text-gray-700">Gallery Images</h3>
                 <button type="button" wire:click="openMediaBrowser"
@@ -120,8 +221,7 @@
                 <div class="relative group">
                     <img src="{{ $img['url'] }}" alt="{{ $img['name'] }}"
                          class="w-full aspect-square object-cover rounded-lg border border-gray-200">
-                    <button type="button" wire:click="deleteImage({{ $img['id'] }})"
-                            wire:loading.attr="disabled"
+                    <button type="button" @click="imgDel = @js(['id' => $img['id'], 'url' => $img['url'], 'name' => $img['name']])"
                             class="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition leading-none">
                         &times;
                     </button>
@@ -129,6 +229,27 @@
                 @endforeach
             </div>
             @endif
+
+            {{-- Delete image: keep the file on the server, or delete it too --}}
+            <div x-show="imgDel" x-transition.opacity class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" style="display: none" @keydown.escape.window="imgDel = null">
+                <div class="bg-white rounded-xl shadow-lg max-w-md w-full" @click.outside="imgDel = null">
+                    <div class="px-6 py-4 border-b border-gray-100"><h3 class="text-lg font-bold text-neutral-950">Remove image?</h3></div>
+                    <div class="px-6 py-4 flex gap-4">
+                        <img :src="imgDel?.url" class="w-20 h-20 object-cover rounded-lg border border-gray-200 shrink-0">
+                        <div class="text-sm text-gray-600 space-y-2">
+                            <p>The image will be removed from this product.</p>
+                            <p><b>Also delete the file from the server?</b> If you keep it, it stays under “Unused files on server” in Browse Library and can be added to any product later.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 border-t border-gray-100 flex flex-wrap gap-2 justify-end">
+                        <button type="button" @click="imgDel = null" class="px-4 py-2 text-gray-600 rounded-lg hover:bg-gray-100 transition font-medium text-sm">Cancel</button>
+                        <button type="button" @click="$wire.deleteImage(imgDel.id, false); imgDel = null"
+                                class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition font-medium text-sm">Remove, keep file</button>
+                        <button type="button" @click="$wire.deleteImage(imgDel.id, true); imgDel = null"
+                                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium text-sm">Delete from server too</button>
+                    </div>
+                </div>
+            </div>
 
             <label class="block">
                 <span class="block text-xs font-semibold text-gray-500 mb-1">
@@ -144,15 +265,25 @@
             <p class="text-xs text-green-600 mt-2">{{ count($newImages) }} file(s) selected — will save on submit.</p>
             @endif
 
-            @if(count($pickedMedia))
+            @if(count($pickedMedia) || count($pickedFiles))
             <div class="mt-4 pt-4 border-t border-gray-100">
                 <p class="text-xs font-semibold text-gray-500 mb-2">From library — will save on submit</p>
                 <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
                     @foreach($pickedMedia as $img)
-                    <div class="relative group">
+                    <div class="relative group" wire:key="pm-{{ $img['id'] }}">
                         <img src="{{ $img['url'] }}" alt="{{ $img['name'] }}"
                              class="w-full aspect-square object-cover rounded-lg border border-brand/40">
                         <button type="button" wire:click="removePicked({{ $img['id'] }})"
+                                class="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition leading-none">
+                            &times;
+                        </button>
+                    </div>
+                    @endforeach
+                    @foreach($pickedFiles as $key => $file)
+                    <div class="relative group" wire:key="pf-{{ $key }}">
+                        <img src="{{ $file['url'] }}" alt="{{ $file['name'] }}"
+                             class="w-full aspect-square object-cover rounded-lg border border-dashed border-brand">
+                        <button type="button" wire:click="removePickedFile('{{ $key }}')"
                                 class="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition leading-none">
                             &times;
                         </button>
@@ -169,13 +300,13 @@
             <div class="bg-white rounded-xl shadow-lg max-w-3xl w-full max-h-[85vh] flex flex-col">
                 <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between shrink-0">
                     <div class="flex items-center gap-2">
-                        @if($browsingProductId)
+                        @if($browsingProductId || $browsingUnused)
                         <button type="button" wire:click="browseFolder(null)" class="text-gray-400 hover:text-gray-700 transition">
                             <x-admin.icon name="arrow-left" class="w-4 h-4" />
                         </button>
                         @endif
                         <h3 class="text-sm font-semibold text-gray-700">
-                            {{ $browsingProductId ? 'Select images to reuse' : 'Media Library — browse by product' }}
+                            {{ $browsingUnused ? 'Unused files on server' : ($browsingProductId ? 'Select images to reuse' : 'Media Library — browse by product') }}
                         </h3>
                     </div>
                     <button type="button" wire:click="closeMediaBrowser" class="text-gray-400 hover:text-gray-700 transition">
@@ -184,8 +315,42 @@
                 </div>
 
                 <div class="px-6 py-4 overflow-y-auto">
-                    @if(!$browsingProductId)
+                    @if($browsingUnused)
+                        {{-- Files kept on the server after being removed from a product --}}
+                        @if(count($unusedFiles))
+                        <p class="text-xs text-gray-500 mb-3">Click to select for this product. 🗑 deletes the file from the server permanently.</p>
+                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
+                            @foreach($unusedFiles as $file)
+                            @php $picked = isset($pickedFiles[$file['key']]); @endphp
+                            <div class="relative group" wire:key="uf-{{ $file['key'] }}">
+                                <button type="button" wire:click="togglePickFile(@js($file['path']))" class="block w-full">
+                                    <img src="{{ $file['url'] }}" alt="{{ $file['name'] }}" loading="lazy"
+                                         class="w-full aspect-square object-cover rounded-lg border-2 transition {{ $picked ? 'border-brand' : 'border-gray-200' }}">
+                                    @if($picked)
+                                    <div class="absolute inset-0 bg-brand/20 rounded-lg flex items-center justify-center">
+                                        <span class="bg-brand text-white rounded-full w-6 h-6 flex items-center justify-center"><x-admin.icon name="check-circle" class="w-4 h-4" /></span>
+                                    </div>
+                                    @endif
+                                </button>
+                                <p class="text-[10px] text-gray-400 truncate mt-1">{{ $file['name'] }}</p>
+                                <button type="button" wire:click="deleteUnusedFile(@js($file['path']))"
+                                        wire:confirm="Delete {{ $file['name'] }} from the server permanently?"
+                                        class="absolute top-1 right-1 bg-white/90 text-red-600 rounded-full w-6 h-6 text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow">🗑</button>
+                            </div>
+                            @endforeach
+                        </div>
+                        @else
+                        <p class="text-sm text-gray-400 text-center py-10">No unused files — every file on the server belongs to a product.</p>
+                        @endif
+                    @elseif(!$browsingProductId)
                         {{-- Folder view: one folder per product that already has images --}}
+                        @if(count($unusedFiles))
+                        <button type="button" wire:click="browseUnused" class="w-full mb-4 flex items-center gap-3 p-3 rounded-lg border border-dashed border-gray-300 hover:border-brand text-left transition">
+                            <x-admin.icon name="folder" class="w-6 h-6 text-amber-500" />
+                            <span class="text-sm font-medium text-gray-700">Unused files on server</span>
+                            <span class="text-xs text-gray-400">{{ count($unusedFiles) }} file{{ count($unusedFiles) === 1 ? '' : 's' }} not attached to any product</span>
+                        </button>
+                        @endif
                         @if(count($mediaFolders))
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                             @foreach($mediaFolders as $folder)
@@ -228,7 +393,8 @@
                 </div>
 
                 <div class="px-6 py-4 border-t border-gray-100 flex items-center justify-between shrink-0">
-                    <p class="text-xs text-gray-500">{{ count($pickedMedia) }} image{{ count($pickedMedia) === 1 ? '' : 's' }} selected</p>
+                    @php $pickedCount = count($pickedMedia) + count($pickedFiles); @endphp
+                    <p class="text-xs text-gray-500">{{ $pickedCount }} image{{ $pickedCount === 1 ? '' : 's' }} selected</p>
                     <button type="button" wire:click="closeMediaBrowser"
                             class="px-4 py-2 bg-brand text-white rounded-lg text-sm font-medium hover:bg-brand-dark transition">
                         Done
@@ -237,58 +403,6 @@
             </div>
         </div>
         @endif
-
-        {{-- Specifications --}}
-        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-sm font-semibold text-gray-700">Specifications</h3>
-                <button type="button" wire:click="addSpec"
-                        class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-lg transition">
-                    + Add row
-                </button>
-            </div>
-
-            @forelse($specs as $i => $spec)
-            <div x-data="{ locale: 'uz' }" class="grid grid-cols-2 gap-3 mb-3 p-3 bg-gray-50 border border-gray-200 rounded-lg">
-                <div>
-                    <div class="flex gap-1 mb-1">
-                        @foreach(['uz','ru','en'] as $c)
-                        <button type="button" @click="locale='{{ $c }}'"
-                                :class="locale==='{{ $c }}' ? 'text-brand font-bold' : 'text-gray-400'"
-                                class="text-xs px-1 transition">{{ $c }}</button>
-                        @endforeach
-                    </div>
-                    @foreach(['uz','ru','en'] as $c)
-                    <input x-show="locale==='{{ $c }}'" type="text"
-                           wire:model="specs.{{ $i }}.key.{{ $c }}"
-                           placeholder="Key ({{ $c }})"
-                           class="w-full rounded border-gray-300 text-xs focus:border-brand focus:ring-brand">
-                    @endforeach
-                </div>
-                <div>
-                    <div class="flex gap-1 mb-1">
-                        @foreach(['uz','ru','en'] as $c)
-                        <button type="button" @click="locale='{{ $c }}'"
-                                :class="locale==='{{ $c }}' ? 'text-brand font-bold' : 'text-gray-400'"
-                                class="text-xs px-1 transition">{{ $c }}</button>
-                        @endforeach
-                    </div>
-                    @foreach(['uz','ru','en'] as $c)
-                    <input x-show="locale==='{{ $c }}'" type="text"
-                           wire:model="specs.{{ $i }}.value.{{ $c }}"
-                           placeholder="Value ({{ $c }})"
-                           class="w-full rounded border-gray-300 text-xs focus:border-brand focus:ring-brand">
-                    @endforeach
-                </div>
-                <button type="button" wire:click="removeSpec({{ $i }})"
-                        class="col-span-2 text-xs text-red-400 hover:text-red-600 text-right transition">
-                    Remove row
-                </button>
-            </div>
-            @empty
-            <p class="text-sm text-gray-400 text-center py-4">No specifications yet. Click "+ Add row" to start.</p>
-            @endforelse
-        </div>
 
         {{-- Actions --}}
         <div class="flex items-center gap-3 pb-4">

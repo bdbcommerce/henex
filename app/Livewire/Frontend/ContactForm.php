@@ -43,9 +43,7 @@ class ContactForm extends Component
 
     public function render()
     {
-        $products = cache()->remember('products_select', 600, fn () =>
-            Product::where('is_active', true)->orderBy('sort_order')->get(['id','name'])
-        );
+        $products = \App\Support\SiteData::productOptions();
         return view('livewire.frontend.contact-form', compact('products'));
     }
 }

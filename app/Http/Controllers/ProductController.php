@@ -21,7 +21,8 @@ class ProductController extends Controller
 
     public function category(string $slug): View
     {
-        $category = Category::where('slug', $slug)->where('is_active', true)->firstOrFail();
+        $category = Category::findBySlugOrRedirect($slug);   // old slugs 301 to the current URL
+        abort_unless($category->is_active, 404);
 
         $categories = Category::where('is_active', true)
             ->whereNull('parent_id')
@@ -36,11 +37,18 @@ class ProductController extends Controller
     {
         abort_if(! $product->is_active, 404);
 
-        $product->load([
-            'categories',
-            'specifications' => fn ($q) => $q->orderBy('sort_order'),
-            'media',
-        ]);
+        $product->load(['categories', 'media', 'attributeValues.attribute']);
+
+        // Spec table rows from attributes: "Connectivity" → "USB cable, Bluetooth"
+        $locale = app()->getLocale();
+        $specs = $product->attributeValues
+            ->filter(fn ($v) => $v->attribute->is_active)
+            ->sortBy([fn ($a, $b) => $a->attribute->sort_order <=> $b->attribute->sort_order, fn ($a, $b) => $a->sort_order <=> $b->sort_order])
+            ->groupBy('attribute_id')
+            ->map(fn ($values) => [
+                'key'   => $values->first()->attribute->getTranslation('name', $locale),
+                'value' => $values->map(fn ($v) => $v->getTranslation('value', $locale))->join(', '),
+            ])->values();
 
         $relatedProducts = Product::where('is_active', true)
             ->whereHas('categories', fn ($q) =>
@@ -51,6 +59,6 @@ class ProductController extends Controller
             ->limit(4)
             ->get();
 
-        return view('pages.products.show', compact('product', 'relatedProducts'));
+        return view('pages.products.show', compact('product', 'relatedProducts', 'specs'));
     }
 }

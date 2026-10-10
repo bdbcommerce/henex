@@ -33,6 +33,9 @@
             <a href="{{ route('admin.categories.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.categories.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
                 <x-admin.icon name="categories" class="w-[18px] h-[18px] shrink-0" /> Categories
             </a>
+            <a href="{{ route('admin.attributes.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.attributes.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                <x-admin.icon name="attributes" class="w-[18px] h-[18px] shrink-0" /> Attributes
+            </a>
             <a href="{{ route('admin.resellers.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.resellers.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
                 <x-admin.icon name="resellers" class="w-[18px] h-[18px] shrink-0" /> Resellers
             </a>
@@ -45,6 +48,18 @@
             <a href="{{ route('admin.inquiries.index') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.inquiries.*') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
                 <x-admin.icon name="inquiries" class="w-[18px] h-[18px] shrink-0" /> Inquiries
             </a>
+            <div class="pt-3 mt-3 border-t border-white/10 space-y-0.5">
+                <div class="px-3 pb-1 text-[10px] font-semibold uppercase tracking-wider text-gray-500">Telegram bot</div>
+                @foreach([
+                    ['admin.telegram.index', 'admin.telegram.*', 'telegram', 'Bot & clients'],
+                    ['admin.knowledge.index', 'admin.knowledge.*', 'knowledge', 'Knowledge Base'],
+                    ['admin.industries.index', 'admin.industries.*', 'industries', 'Industries'],
+                ] as [$route, $pattern, $icon, $label])
+                <a href="{{ route($route) }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs($pattern) ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">
+                    <x-admin.icon :name="$icon" class="w-[18px] h-[18px] shrink-0" /> {{ $label }}
+                </a>
+                @endforeach
+            </div>
             @role('super_admin')
             <div class="pt-3 mt-3 border-t border-white/10 space-y-0.5">
                 <a href="{{ route('admin.settings') }}" class="flex items-center gap-3 pl-3 pr-3 py-2 rounded-lg border-l-2 transition {{ request()->routeIs('admin.settings') ? 'border-brand bg-white/10 text-white font-medium' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5' }}">

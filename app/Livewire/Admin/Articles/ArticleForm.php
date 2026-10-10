@@ -27,13 +27,10 @@ class ArticleForm extends Component
 
         $this->validate([
             'form.title.uz' => 'required|min:2',
-            'form.slug'     => 'required|alpha_dash|unique:articles,slug' . ($articleId ? ",{$articleId}" : ''),
             'form.type'     => 'required|in:news,blog,guide',
             'cover'         => 'nullable|image|max:4096',
         ], [
             'form.title.uz.required' => 'Title (Uzbek) is required.',
-            'form.slug.required'     => 'Slug is required.',
-            'form.slug.unique'       => 'This slug is already taken.',
         ]);
 
         // If publishing without an explicit date, default to now so it actually
@@ -43,7 +40,6 @@ class ArticleForm extends Component
 
         $this->article ??= new Article;
         $this->article->fill([
-            'slug'         => $this->form['slug'],
             'type'         => $this->form['type'],
             'is_published' => $this->form['is_published'],
             'user_id'      => $this->article->user_id ?? auth()->id(),

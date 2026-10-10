@@ -14,9 +14,10 @@ class AdminSeeder extends Seeder
         Role::firstOrCreate(['name' => 'super_admin', 'guard_name' => 'web']);
         Role::firstOrCreate(['name' => 'editor',      'guard_name' => 'web']);
 
-        $email    = env('ADMIN_EMAIL')    ?? throw new \RuntimeException('ADMIN_EMAIL is not set in .env');
-        $password = env('ADMIN_PASSWORD') ?? throw new \RuntimeException('ADMIN_PASSWORD is not set in .env');
-        $name     = env('ADMIN_NAME')     ?? throw new \RuntimeException('ADMIN_NAME is not set in .env');
+        // Read via config (not env()) so it also works when config is cached.
+        $email    = config('services.admin.email')    ?: throw new \RuntimeException('ADMIN_EMAIL is not set in .env');
+        $password = config('services.admin.password') ?: throw new \RuntimeException('ADMIN_PASSWORD is not set in .env');
+        $name     = config('services.admin.name')     ?: throw new \RuntimeException('ADMIN_NAME is not set in .env');
 
         $admin = User::updateOrCreate(
             ['email' => $email],

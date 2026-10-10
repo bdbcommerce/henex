@@ -176,22 +176,22 @@
                     </a>
                 </div>
 
-                {{-- Quick specs preview (first 4 specs) --}}
-                @if($product->specifications->isNotEmpty())
+                {{-- Quick specs preview (first 4 attributes) --}}
+                @if($specs->isNotEmpty())
                 <div class="border border-gray-200 rounded-xl overflow-x-auto">
                     <table class="w-full text-sm min-w-[300px]">
-                        @foreach($product->specifications->take(4) as $spec)
+                        @foreach($specs->take(4) as $spec)
                         <tr class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }}">
                             <td class="py-3 px-2 sm:px-4 font-semibold text-gray-700 w-2/5 border-b border-gray-100">
-                                {{ $spec->getTranslation('key', app()->getLocale()) }}
+                                {{ $spec['key'] }}
                             </td>
                             <td class="py-3 px-2 sm:px-4 text-gray-600 border-b border-gray-100">
-                                {{ $spec->getTranslation('value', app()->getLocale()) }}
+                                {{ $spec['value'] }}
                             </td>
                         </tr>
                         @endforeach
                     </table>
-                    @if($product->specifications->count() > 4)
+                    @if($specs->count() > 4)
                     <div class="py-2 px-4 bg-gray-50 text-center">
                         <a href="#specifications" class="text-brand text-sm font-semibold hover:underline">
                             {{ __('site.product.view_all_specs') }} ↓
@@ -221,7 +221,7 @@
 @endif
 
 {{-- Full Specifications Table --}}
-@if($product->specifications->isNotEmpty())
+@if($specs->isNotEmpty())
 <section id="specifications" class="py-12 bg-white border-t border-gray-200">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
@@ -229,13 +229,13 @@
             <div class="border border-gray-200 rounded-2xl overflow-x-auto">
                 <table class="w-full text-sm min-w-[360px]">
                     <tbody>
-                        @foreach($product->specifications as $spec)
+                        @foreach($specs as $spec)
                         <tr class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }}">
                             <td class="py-3.5 px-3 sm:px-5 font-semibold text-gray-700 w-2/5 border-b border-gray-100">
-                                {{ $spec->getTranslation('key', app()->getLocale()) }}
+                                {{ $spec['key'] }}
                             </td>
                             <td class="py-3.5 px-3 sm:px-5 text-gray-600 border-b border-gray-100">
-                                {{ $spec->getTranslation('value', app()->getLocale()) }}
+                                {{ $spec['value'] }}
                             </td>
                         </tr>
                         @endforeach
