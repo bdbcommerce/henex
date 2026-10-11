@@ -4,11 +4,15 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Product;
+use Database\Seeders\Concerns\AttachesSeedMedia;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
+    use AttachesSeedMedia;
+
     /** Maps the scraped henex.cn category to one or more of our seeded category slugs. */
     private array $categoryMap = [
         'Wireless Barcode Scanner' => ['wireless-barcode-scanners'],
@@ -21,11 +25,21 @@ class ProductSeeder extends Seeder
     /** One flagship model per category, shown in the homepage FeaturedProducts section. */
     private array $featuredSkus = ['H500', 'H310RC', 'H3308SRC', 'H900R', 'H8000', 'H60', 'H4', 'HC-666'];
 
+    /**
+     * Explicit gallery per SKU — file names inside database/seeders/media/products/,
+     * in display order (the first one is the main image). Products not listed here
+     * fall back to every "{slug}-{n}.jpg" file in that folder.
+     */
+    private array $images = [
+        'H500' => ['h500-1.jpg', 'h500-2.jpg', 'h500-3.jpg'],
+        'H310RC' => ['h310rc-1.jpg', 'h310rc-4.jpg', 'h310rc-2.jpg'],
+    ];
+
     public function run(): void
     {
         $items = json_decode(file_get_contents(database_path('seeders/data/henex-products.json')), true);
         $categories = Category::all()->keyBy('slug');
-        $imageFiles = collect(glob(database_path('seeders/data/images/*.jpg')));
+        $imageFiles = collect(glob($this->mediaPath('products/*.jpg')));
 
         foreach ($items as $index => $item) {
             $name = $item['name'];
@@ -70,32 +84,30 @@ class ProductSeeder extends Seeder
                 ->values();
             $product->categories()->sync($categoryIds);
 
-            if ($product->getMedia('gallery')->isEmpty()) {
-                // A plain "{$slug}-*.jpg" prefix match would also sweep up sibling variants
-                // that share this slug as a prefix (e.g. "hc-3206" matching "hc-3206-ccd-*.jpg"),
-                // so require the suffix after the slug to be purely numeric.
-                $pattern = '/^' . preg_quote($slug, '/') . '-\d+\.jpg$/';
-                $imagePaths = $imageFiles
-                    ->filter(fn ($path) => preg_match($pattern, basename($path)))
-                    ->sort(fn ($a, $b) => strnatcmp($a, $b))
-                    ->values()
-                    ->all();
-                foreach ($imagePaths as $path) {
-                    try {
-                        $product->addMedia($path)
-                            ->preservingOriginal()
-                            ->usingFileName(basename($path))
-                            ->toMediaCollection('gallery');
-                    } catch (\Throwable $e) {
-                        $this->command?->warn("  Image failed for {$name}: {$e->getMessage()}");
-                    }
-                }
-                if (empty($imagePaths)) {
-                    $this->command?->warn("  No local images found for {$name} ({$slug}-*.jpg)");
-                }
+            $imageNames = $this->images[$name] ?? $this->imagesBySlug($imageFiles, $slug);
+            if (empty($imageNames)) {
+                $this->command?->warn("  No local images found for {$name} ({$slug}-*.jpg)");
             }
+            $this->attachSeedMedia($product, 'gallery', 'products', $imageNames);
 
             $this->command?->info("Seeded product: {$name}");
         }
+    }
+
+    /**
+     * A plain "{$slug}-*.jpg" prefix match would also sweep up sibling variants
+     * that share this slug as a prefix (e.g. "hc-3206" matching "hc-3206-ccd-*.jpg"),
+     * so require the suffix after the slug to be purely numeric.
+     */
+    private function imagesBySlug(Collection $imageFiles, string $slug): array
+    {
+        $pattern = '/^' . preg_quote($slug, '/') . '-\d+\.jpg$/';
+
+        return $imageFiles
+            ->map(fn ($path) => basename($path))
+            ->filter(fn ($file) => preg_match($pattern, $file))
+            ->sort(fn ($a, $b) => strnatcmp($a, $b))
+            ->values()
+            ->all();
     }
 }
